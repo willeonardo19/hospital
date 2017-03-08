@@ -1,9 +1,19 @@
 <?php
 
-namespace hospital\Http\Controllers;
+/*
+ * Taken from
+ * https://github.com/laravel/framework/blob/5.2/src/Illuminate/Auth/Console/stubs/make/controllers/HomeController.stub
+ */
 
+namespace hospital\Http\Controllers;///aqui cambie app por hospital
+
+use App\Http\Requests;
 use Illuminate\Http\Request;
-
+use Auth;
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**
@@ -19,10 +29,14 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        return view('hospital.inicio');
+        return view('home');
+    }
+    public function logout(){
+        Auth::logout();
+        return Redirect::to('/');
     }
 }
