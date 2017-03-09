@@ -39,7 +39,7 @@
                                 <img src="{{asset('/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
                                 <p>
                                     {{ Auth::user()->user }}
-                                    <small>{{  Carbon\Carbon::today('America/Guatemala')->formatLocalized(' %d %b %Y')}} </small>
+                                    <small>{{Carbon\Carbon::today('America/Guatemala')->formatLocalized(' %d %b %Y')}} </small>
                                     
                                 </p>
                             </li>
