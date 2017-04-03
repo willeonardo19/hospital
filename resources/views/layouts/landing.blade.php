@@ -304,5 +304,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         interval: 3500
     })
 </script>
+<script src="https://use.fontawesome.com/d5fc20dcd3.js"></script>
 </body>
 </html>

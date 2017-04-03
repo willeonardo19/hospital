@@ -7,6 +7,11 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 
+<script src="https://use.fontawesome.com/d5fc20dcd3.js"></script>
+<script  src="{{asset('assets/chosen_v1.4.2/chosen.jquery.js')}}"> </script>
+
+@yield('js')
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the

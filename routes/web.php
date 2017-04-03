@@ -15,6 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+/////////////////////////////////////////////////
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+
+	Route::resource('personal','PersonalController');
+	Route::get('personal/{id}/destroy',[
+			'uses'		=>	'PersonalController@destroy',
+			'as'		=>	'personal.destroy'
+		]);
+	Route::resource('usuarios','UsuariosController');
+	Route::get('usuarios/{id}/destroy',[
+			'uses'		=>	'UsuariosController@destroy',
+			'as'		=>	'usuarios.destroy'
+		]);
+});
+
+//////////////////////////////////////////////////
 Route::get('logout','Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index');
+

@@ -17,9 +17,12 @@ class CreatePersonalTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->string('direccion');
-            $table->string('dpi');
+            $table->date('fechna');
+            $table->string('dpi')->nullable();
+            $table->string('contacemer');
+            $table->string('contacttel')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

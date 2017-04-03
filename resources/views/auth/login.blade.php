@@ -27,7 +27,7 @@
     <form action="{{ url('/login') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Usuario" name="user"/>
+            <input type="text" class="form-control" placeholder="Usuario" name="user" autofocus/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
