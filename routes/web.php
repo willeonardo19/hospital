@@ -30,6 +30,14 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 			'uses'		=>	'UsuariosController@destroy',
 			'as'		=>	'usuarios.destroy'
 		]);
+	Route::resource('pacientes','PacientesController');
+	Route::get('pacientes/{id}/destroy',[
+			'uses'		=>	'PacientesController@destroy',
+			'as'		=>	'pacientes.destroy'
+		]);
+
+
+
 });
 
 //////////////////////////////////////////////////

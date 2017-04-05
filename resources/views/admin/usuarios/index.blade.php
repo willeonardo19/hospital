@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Personal
+	Usuarios
 @endsection
 
 @section('contentheader_title')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Registro Personal
+	Registro Usuarios
 @endsection
 
 @section('contentheader_title')
