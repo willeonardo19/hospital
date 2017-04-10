@@ -21,7 +21,7 @@
 								<a href="{{route('personal.create')}}" class="btn btn-primary">Agregar Personal</a>
 								{!! Form::open(['personal.index','method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
 									<div class="input-group">
-										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Solicitud','aria-describedby'=>'search'])!!}
+										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Personal','aria-describedby'=>'search'])!!}
 										<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
 									</div>
 								{!! Form::close() !!}

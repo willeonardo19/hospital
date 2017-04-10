@@ -41,6 +41,10 @@
 									{!! Form::date('fechna',$persona->fechna,['class'=>'form-control','placeholder'=>'DPI','required']) !!}
 								</div>
 								<div class="form-group col-md-6">
+									{!! Form::label('title','Sexo')!!}
+									{!!Form::select('sexo',['masculino'=>'Masculino','femenino'=>'Femenino'],$persona->sexo,['class'=>'form-control select-tipo']) !!}
+								</div>
+								<div class="form-group col-md-6">
 									{!! Form::label('title','DPI')!!}
 									{!! Form::number('dpi',$persona->dpi,['class'=>'form-control','placeholder'=>'DPI','maxlength' => '30']) !!}
 								</div>

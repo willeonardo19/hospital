@@ -45,6 +45,7 @@ class PersonalController extends Controller
                 'telefono'          =>      'max:12',
                 'direccion'         =>      'min:6|required',
                 'fechna'            =>      'before:tomorrow',
+                'sexo'              =>      'required',
                 'dpi'               =>      'max:30',
                 'contacemer'        =>      'min:6|max:250|required',
                 'contacttel'        =>      'max:12'//dimensions:min_width=45,min_height=45'
@@ -59,6 +60,7 @@ class PersonalController extends Controller
                 $persona->direccion         = $request->input('direccion');
                 $persona->dpi               = $request->input('dpi');
                 $persona->fechna            = $request->input('fechna');
+                $persona->sexo              = $request->input('sexo');
                 $persona->contacemer        = $request->input('contacemer');
                 $persona->contacttel        = $request->input('contactel');
                 
@@ -113,6 +115,7 @@ class PersonalController extends Controller
             'telefono'          =>      'max:12',
             'direccion'         =>      'min:6|required',
             'fechna'            =>      'before:tomorrow',
+            'sexo'              =>      'required',
             'dpi'               =>      'max:30',
             'contacemer'        =>      'min:6|max:250|required',
             'contacttel'        =>      'max:12'//dimensions:min_width=45,min_height=45'
@@ -127,6 +130,7 @@ class PersonalController extends Controller
             $persona->direccion         = $request->input('direccion');
             $persona->dpi               = $request->input('dpi');
             $persona->fechna            = $request->input('fechna');
+            $persona->sexo              = $request->input('sexo');
             $persona->contacemer        = $request->input('contacemer');
             $persona->contacttel        = $request->input('contactel');
 

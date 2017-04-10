@@ -21,7 +21,7 @@
 								<a href="{{route('pacientes.create')}}" class="btn btn-primary">Agregar Paciente</a>
 								{!! Form::open(['pacientes.index','method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
 									<div class="input-group">
-										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Solicitud','aria-describedby'=>'search'])!!}
+										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Paciente','aria-describedby'=>'search'])!!}
 										<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
 									</div>
 								{!! Form::close() !!}
@@ -36,6 +36,7 @@
 											<th>Teléfono</th>
 											<th>Dirección</th>
 											<th>DPI</th>
+											
 											<th>Opciones</th>
 										</thead>
 										<tbody>
@@ -46,9 +47,10 @@
 												<td>{{ $paciente->telefono }}</td>
 												<td>{{ $paciente->direccion }}</td>
 												<td>{{ $paciente->dpi }}</td>
+												
 												<td>
+													<a href="{{ route('pacientes.show',$paciente->id) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
 													<a href="{{ route('pacientes.edit',$paciente->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
-
 													<a href="{{ route('pacientes.destroy',$paciente->id) }}" onClick="return confirm('¿Desea eliminar esta paciente?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
 												</td>
 											</tr>

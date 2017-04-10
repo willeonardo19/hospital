@@ -20,6 +20,7 @@ class CreatePersonalTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('direccion');
             $table->date('fechna');
+            $table->enum('sexo',['masculino','femenino'])->default('masculino');
             $table->string('dpi')->nullable();
             $table->string('contacemer');
             $table->string('contacttel')->nullable();

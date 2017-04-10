@@ -21,7 +21,7 @@
 								<a href="{{route('usuarios.create')}}" class="btn btn-primary">Agregar Usuario</a>
 								{!! Form::open(['usuarios.index','method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
 									<div class="input-group">
-										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Solicitud','aria-describedby'=>'search'])!!}
+										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Usuario','aria-describedby'=>'search'])!!}
 										<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
 									</div>
 								{!! Form::close() !!}

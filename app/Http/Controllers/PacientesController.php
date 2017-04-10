@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use hospital\Paciente;
 use Laracasts\Flash\Flash;
 use DB;
+use Carbon\Carbon;
 class PacientesController extends Controller
 {
     /**
@@ -42,6 +43,7 @@ class PacientesController extends Controller
        
        $this->validate($request,array(
                 'cod_paciente'      =>      'max:250|required',
+                'dpi'               =>      'max:250',
                 'nombre'            =>      'min:3|max:250|required',
                 'apellido'          =>      'min:3|max:250|required',
                 'telefono'          =>      'max:12',
@@ -54,6 +56,7 @@ class PacientesController extends Controller
        try {
             DB::beginTransaction();
             $paciente->cod_pac          = $request->input('cod_paciente');
+            $paciente->dpi              = $request->input('dpi');
             $paciente->nombre           = $request->input('nombre');
             $paciente->apellido         = $request->input('apellido');
             $paciente->telefono         = $request->input('telefono');
@@ -83,7 +86,20 @@ class PacientesController extends Controller
      */
     public function show($id)
     {
-        //
+        $paciente = Paciente::find($id);
+        $edad = Carbon::createFromDate(
+            date('Y',strtotime($paciente->fech_na)),
+            date('m',strtotime($paciente->fech_na)),
+            date('d',strtotime($paciente->fech_na)))->age;
+
+        $fecha = Carbon::createFromDate(
+            date('Y',strtotime($paciente->fech_na)),
+            date('m',strtotime($paciente->fech_na)),
+            date('d',strtotime($paciente->fech_na)))
+            ->format('d - m - Y');
+        
+       //dd($fecha);
+       return view('admin.pacientes.show')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
     }
 
     /**
@@ -110,6 +126,7 @@ class PacientesController extends Controller
         //dd($request);
          $this->validate($request,array(
                 'cod_paciente'      =>      'max:250|required',
+                'dpi'               =>      'max:250',
                 'nombre'            =>      'min:3|max:250|required',
                 'apellido'          =>      'min:3|max:250|required',
                 'telefono'          =>      'max:12',
@@ -124,6 +141,7 @@ class PacientesController extends Controller
             DB::beginTransaction();
             $paciente->fill([
             $paciente->cod_pac           = $request->input('cod_paciente'),
+            $paciente->dpi               = $request->input('dpi'),
             $paciente->nombre            = $request->input('nombre'),
             $paciente->apellido          = $request->input('apellido'),
             $paciente->telefono          = $request->input('telefono'),
@@ -140,10 +158,6 @@ class PacientesController extends Controller
 
             }
 
-
-
-
-             
          } catch (Exception $e) {
              DB::rollback();
             Flash::error($persona->nombre.' ocurrió un problema al procesar su solicitud.'.$e); 

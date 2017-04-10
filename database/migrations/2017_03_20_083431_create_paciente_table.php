@@ -16,14 +16,18 @@ class CreatePacienteTable extends Migration
         Schema::create('paciente', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cod_pac');
+            $table->string('dpi')->nullable();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->date('fech_na');
             $table->enum('sexo',['masculino','femenino'])->default('masculino');
             $table->enum('est_civ',['soltero','casado','divorciado','viudo','union'])->default('soltero');
             $table->string('ocupacion');
             $table->string('direccion');
+            $table->string('contacemer');
+            $table->string('contacttel')->nullable();
+            //$table->string('antecedentes');
             $table->timestamps();
             $table->softDeletes();
         });
