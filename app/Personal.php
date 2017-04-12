@@ -26,10 +26,10 @@ public function scopeSearch($query,$buscar)
     {
         return $query->where('apellido','LIKE',"%$buscar%");
     }
-
- public function users()
+//Relacion para determinar que personal le corresponde el usuario
+public function users()
     {
-        return $this->hasMany('hospital\Users');
+        return $this->hasMany('hospital\User');
     }
 
 

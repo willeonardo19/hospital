@@ -39,7 +39,7 @@ class PacientesController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $paciente = new Paciente;
+       
        
        $this->validate($request,array(
                 'cod_paciente'      =>      'max:250|required',
@@ -51,9 +51,12 @@ class PacientesController extends Controller
                 'sexo'              =>      'required',
                 'est_civ'           =>      'required',
                 'ocupacion'         =>      'min:6|max:200|required',
-                'direccion'         =>      'min:6|max:200|required'
+                'direccion'         =>      'min:6|max:200|required',
+                'contacemer'        =>      'min:6|max:250|required',
+                'contacttel'        =>      'max:12'
                 ));
-       try {
+       try { 
+            $paciente = new Paciente;
             DB::beginTransaction();
             $paciente->cod_pac          = $request->input('cod_paciente');
             $paciente->dpi              = $request->input('dpi');
@@ -65,6 +68,8 @@ class PacientesController extends Controller
             $paciente->est_civ          = $request->input('est_civ');
             $paciente->ocupacion        = $request->input('ocupacion');
             $paciente->direccion        = $request->input('direccion');
+            $paciente->contacemer       = $request->input('contacemer');
+            $paciente->contacttel       = $request->input('contactel');
             if($paciente->save()){
                     DB::commit();
                     //Log::info('Se ha registrado una nueva solicitud de '.$datos_usuario->nombre.', '.$datos_usuario->apellido);
@@ -134,10 +139,13 @@ class PacientesController extends Controller
                 'sexo'              =>      'required',
                 'est_civ'           =>      'required',
                 'ocupacion'         =>      'min:6|max:200|required',
-                'direccion'         =>      'min:6|max:200|required'
+                'direccion'         =>      'min:6|max:200|required',
+                'contacemer'        =>      'min:6|max:250|required',
+                'contacttel'        =>      'max:12'
                 ));
-         $paciente = Paciente::find($id);
+         
          try {
+            $paciente = Paciente::find($id);
             DB::beginTransaction();
             $paciente->fill([
             $paciente->cod_pac           = $request->input('cod_paciente'),
@@ -150,6 +158,8 @@ class PacientesController extends Controller
             $paciente->est_civ           = $request->input('est_civ'),
             $paciente->ocupacion         = $request->input('ocupacion'),
             $paciente->direccion         = $request->input('direccion'),
+            $paciente->contacemer        = $request->input('contacemer'),
+            $paciente->contacttel        = $request->input('contactel')
                 ]);
 
             if($paciente->save()){

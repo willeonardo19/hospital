@@ -31,7 +31,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            @if(Auth::user()->type =='admin' )
+                @if(Auth::user()->type =='admin' )
                 <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
@@ -43,6 +43,30 @@
                         <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='doctor')
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('admin/consulta')}}">Consulta Asignadas</a></li>
+                    </ul>
+                </li>
+            
+
+                @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='secretaria')
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
+                        <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
+                        <li><a href="{{url('admin/historial')}}">Historial de  Consulta</a></li>
+                    </ul>
+                </li>
+            
+
+                @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='doctor')
                 <li class="treeview">
                     <!--a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a-->
                     <a href="#"><i class='fa fa-user-md'></i> <span> Medicos </span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -51,6 +75,8 @@
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='enfermera')
                 <li class="treeview">
                     <a href="#"><i class='fa fa-female'></i> <span> Enfermeras </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
@@ -58,6 +84,8 @@
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='laboratorio')
                 <li class="treeview">
                     <a href="#"><i class='fa fa-flask'></i> <span> Laboratorio </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
@@ -65,6 +93,8 @@
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='administracion')
 
                 <li class="treeview">
                     <a href="#"><i class='fa fa-file'></i> <span> Administración </span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -73,6 +103,8 @@
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     </ul>
                 </li>
+                 @endif
+                @if(Auth::user()->type =='admin' || Auth::user()->type =='administracion')
                 <li class="treeview">
                     <a href="#"><i class='fa fa-bar-chart'></i> <span> Reportes </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
@@ -80,79 +112,8 @@
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
-                        <li><a href="#">Generar Consulta</a></li>
-                    </ul>
-                </li>
-            @elseif(Auth::user()->type =='administracion' )
-               <li class="treeview">
-                    <a href="#"><i class='fa fa-bar-chart'></i> <span> Reportes </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    </ul>
-                </li> 
-                <li class="treeview">
-                    <a href="#"><i class='fa fa-file'></i> <span> Administración </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    </ul>
-                </li>
-            @elseif(Auth::user()->type =='laboratorio' )
-                <li class="treeview">
-                    <a href="#"><i class='fa fa-flask'></i> <span> Laboratorio </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    </ul>
-                </li>
-            @elseif(Auth::user()->type =='doctor' )
-                <li class="treeview">
-                    <!--a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a-->
-                    <a href="#"><i class='fa fa-user-md'></i> <span> Medicos </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
-                        <li><a href="#">Generar Consulta</a></li>
-                    </ul>
-                </li>
-            @elseif(Auth::user()->type =='enfermera' )
-                <li class="treeview">
-                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
-                        <li><a href="#">Generar Consulta</a></li>
-                    </ul>
-                </li>
-            @elseif(Auth::user()->type =='secretaria' )
-                 <li class="treeview">
-                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
-                        <li><a href="#">Generar Consulta</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <!--a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a-->
-                    <a href="#"><i class='fa fa-user-md'></i> <span> Medicos </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    </ul>
-                </li>
-
-
-        @endif
+                 @endif
+                
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

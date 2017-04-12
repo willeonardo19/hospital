@@ -5,6 +5,8 @@ namespace hospital;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
@@ -15,8 +17,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table ="users";
     protected $fillable = [
-        'name', 'email', 'password',
+        'user',
+        'email', 
+        'password',
+        'type',
+        'personal_id'
     ];
 
     /**
@@ -31,12 +38,18 @@ class User extends Authenticatable
     {
         return $query->where('user','LIKE',"%$buscar%");
     }
-
+  
+    //Relacion para determinar que personal le corresponde el usuario
     public function personal()
     {
         return $this->belongsTo('hospital\Personal');
     }
+    //
+    public function consulta()
+    {
+        return $this->hasOne('hospital\Consulta');
+    }
 
 
-
+  
 }

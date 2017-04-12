@@ -60,6 +60,15 @@
 									{!! Form::label('title','Dirección')!!}
 									{!! Form::text('direccion',null,['class'=>'form-control','placeholder'=>'Dirección','required']) !!}
 								</div>
+								<div class="form-group col-md-6">
+									{!! Form::label('title','Contacto de Emergencia')!!}
+									{!! Form::text('contacemer',null,['class'=>'form-control','placeholder'=>'Contacto de Emergencia','required']) !!}
+								</div>
+								<div class="form-group col-md-6">
+									{!! Form::label('title','Teléfono de Emergencia')!!}
+									{!! Form::number('contacttel',null,['class'=>'form-control','placeholder'=>'Teléfono de Emergencia','maxlength' => '11']) !!}
+								</div>
+								
 
 
 

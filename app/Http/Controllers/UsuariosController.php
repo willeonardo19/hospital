@@ -55,7 +55,7 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new User;
+        
        
        $this->validate($request,array(
                 'user'              =>      'min:3|max:250|required|unique:users',
@@ -68,6 +68,7 @@ class UsuariosController extends Controller
                 ));
 
        try {
+            $usuario = new User;
             DB::beginTransaction();
             $usuario->user            = $request->input('user');
             $usuario->email           = $request->input('email');
@@ -136,8 +137,9 @@ class UsuariosController extends Controller
                 'rol'               =>      'required',
                 'idpersonal'        =>      'required'
         ));
-        $user = User::find($id);
+        
         try {
+            $user = User::find($id);
             DB::beginTransaction();
 
             /*

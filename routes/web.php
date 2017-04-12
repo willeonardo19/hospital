@@ -35,7 +35,14 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 			'uses'		=>	'PacientesController@destroy',
 			'as'		=>	'pacientes.destroy'
 		]);
-
+	Route::resource('consultas','ConsultasController');
+	Route::any('historial','ConsultasController@historial_consultas');
+	Route::any('consulta','ConsultasController@consulta_medica');
+	
+	Route::get('consultas/{id}/destroy',[
+			'uses'		=>	'ConsultasController@destroy',
+			'as'		=>	'consultas.destroy'
+		]);
 
 
 });

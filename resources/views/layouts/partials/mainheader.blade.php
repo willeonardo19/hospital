@@ -38,9 +38,13 @@
                             <li class="user-header">
                                 <img src="{{asset('/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
                                 <p>
-                                    {{ Auth::user()->user }}
-                                    <small>{{Carbon\Carbon::today('America/Guatemala')->formatLocalized(' %d %b %Y')}} </small>
+                                @if(Auth::user()->type =='doctor')
+                                    {{ 'Dr. '. Auth::user()->personal->nombre.' '.Auth::user()->personal->apellido }}
                                     
+                                @else
+                                    {{  Auth::user()->personal->nombre.' '.Auth::user()->personal->apellido }}
+                                 @endif   
+                                 <small>{{Carbon\Carbon::today('America/Guatemala')->formatLocalized(' %d %b %Y')}} </small>
                                 </p>
                             </li>
                             <!-- Menu Body -->

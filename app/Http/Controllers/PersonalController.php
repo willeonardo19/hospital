@@ -37,7 +37,7 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        $persona = new Personal;
+       
        
        $this->validate($request,array(
                 'nombre'            =>      'min:3|max:250|required',
@@ -51,7 +51,8 @@ class PersonalController extends Controller
                 'contacttel'        =>      'max:12'//dimensions:min_width=45,min_height=45'
                 
                 ));
-          try {
+          try { 
+                $persona = new Personal;
                 DB::beginTransaction();
 
                 $persona->nombre            = $request->input('nombre');
@@ -121,8 +122,9 @@ class PersonalController extends Controller
             'contacttel'        =>      'max:12'//dimensions:min_width=45,min_height=45'
             
             ));
-        $persona = Personal::find($id);
+        
         try {
+            $persona = Personal::find($id);
             DB::beginTransaction();
             $persona->nombre            = $request->input('nombre');
             $persona->apellido          = $request->input('apellido');

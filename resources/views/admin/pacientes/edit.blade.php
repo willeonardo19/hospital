@@ -61,6 +61,17 @@
 									{!! Form::label('title','Dirección')!!}
 									{!! Form::text('direccion',$paciente->direccion,['class'=>'form-control','placeholder'=>'Dirección','required']) !!}
 								</div>
+								<div class="form-group col-md-6">
+									{!! Form::label('title','Contacto de Emergencia')!!}
+									{!! Form::text('contacemer',$paciente->contacemer,['class'=>'form-control','placeholder'=>'Contacto de Emergencia','required']) !!}
+								</div>
+								<div class="form-group col-md-6">
+									{!! Form::label('title','Teléfono de Emergencia')!!}
+									{!! Form::text('contacttel',$paciente->contacttel,['class'=>'form-control','placeholder'=>'Teléfono de Emergencia','maxlength' => '11']) !!}
+								</div>
+								
+
+
 								<div class="col-md-12">
 									<div class="form-group">
 										{!! Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}

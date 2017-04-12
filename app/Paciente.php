@@ -26,6 +26,10 @@ public function scopeSearch($query,$buscar)
         return $query->where('apellido','LIKE',"%$buscar%");
     }
 
+public function consulta()
+    {
+        return $this->hasOne('hospital\Consulta');
+    }
 
 
 }
