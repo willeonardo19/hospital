@@ -16,7 +16,7 @@ class CreateConsultaTable extends Migration
         Schema::create('consulta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('paciente_id')->unsigned();
-            $table->integer('usuario_id')->unsigned();
+            $table->integer('usuario_id')->unsigned()->nullable();
             $table->enum('estado',['solicitada','proceso','finalizada'])->default('solicitada');
             $table->foreign('paciente_id')->references('id')->on('paciente')->onUpdate('cascade') ->onDelete('restrict');
             $table->foreign('usuario_id')->references('id')->on('users')->onUpdate('cascade') ->onDelete('restrict');

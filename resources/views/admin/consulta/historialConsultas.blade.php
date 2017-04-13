@@ -34,7 +34,11 @@
 											<tr>
 												<td>{{ $consulta->id }}</td>
 												<td>{{ $consulta->paciente->nombre.', '.$consulta->paciente->apellido }}</td>
-												<td>{{ $consulta->usuario->personal->nombre.' '.$consulta->usuario->personal->apellido }}</td>
+												@if($consulta->usuario==null)
+													<td>Sin dato</td>
+												@else
+													<td>{{ $consulta->usuario->personal->nombre.' '.$consulta->usuario->personal->apellido }}</td>
+												@endif
 												@if($consulta->estado=='solicitada')
 													<td><span class="label label-primary">{{'Solicitada' }}</span></td>
 												@elseif($consulta->estado=='proceso')

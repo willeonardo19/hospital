@@ -27,6 +27,7 @@ class pacienteSeeder extends Seeder
         	//'antecedentes'		=>	'Ninguno',
         	'created_at' 		=> date("Y-m-d H:i:s") 
         	]);
+        /*
         DB::table('paciente')->insert([
             'cod_pac'           =>  '1907',
             'dpi'               =>  '2197696381501',
@@ -59,5 +60,7 @@ class pacienteSeeder extends Seeder
             //'antecedentes'        =>  'Ninguno',
             'created_at'        => date("Y-m-d H:i:s") 
             ]);
+    */
+         factory(hospital\Paciente::class,100)->create();
     }
 }

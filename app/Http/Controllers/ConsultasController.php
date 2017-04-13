@@ -17,17 +17,18 @@ class ConsultasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Esta funcion genera una consulta y devuelve el index para mostar todas las consultas solicitadas del día
     public function index()
     {
         //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
         $consultas = Consulta::orderBy('estado','ASC')->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
-            $consultas->usuario;
+            //$consultas->usuario;
         });
-
+        $pacientes = Paciente::select(DB::raw("CONCAT(nombre,' ',apellido,' --- ',dpi,'  ---   ',fech_na) AS nombre"),'id')->pluck('nombre', 'id');
        //dd($consultas);
-        return view('admin.consulta.index')->with('consultas',$consultas);
+        return view('admin.consulta.index')->with('consultas',$consultas)->with('pacientes',$pacientes);
     }
 
     //Vista para todas las consultas registradas, tanto del dia, como de dias anteriores
@@ -44,10 +45,10 @@ class ConsultasController extends Controller
         return view('admin.consulta.historialConsultas')->with('consultas',$consultas);
     }
     //Vista para las consultas, donde se muestra las consultas asignadas al usuario doctor
-    public function consulta_medica()
+   /* public function consulta_medica()
     {
-        //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
-        $consultas = Consulta::orderBy('estado','ASC')->where('usuario_id','=' ,Auth::user()->id)->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
+        //$consultas = Consulta::orderBy('estado','ASC')->where('usuario_id','=' ,Auth::user()->id)->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
+         $consultas = Consulta::orderBy('estado','ASC')->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
             $consultas->usuario;
@@ -55,26 +56,27 @@ class ConsultasController extends Controller
 
        //dd('');
         return view('admin.consulta.historialConsultas')->with('consultas',$consultas);
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     *///Esta funcion no se utiliza, unicamente redirecciono al index
     public function create()
     {
-        $pacientes = Paciente::select(DB::raw("CONCAT(nombre,' ',apellido,' --- ',dpi,'  ---   ',fech_na) AS nombre"),'id')->pluck('nombre', 'id');
+       /* $pacientes = Paciente::select(DB::raw("CONCAT(nombre,' ',apellido,' --- ',dpi,'  ---   ',fech_na) AS nombre"),'id')->pluck('nombre', 'id');
         /*$users =DB::select('select u.id,concat(p.nombre,p.apellido) as nombre
         from users as u
         inner join personal as p on p.id=u.personal_id
         where type= "doctor"');
-*/
+
         $users=DB::select('Call Doctores();');
         $users= array_pluck($users,'nombre','id');
         return view('admin.consulta.create')->with('pacientes',$pacientes)->with('users',$users);
         //dd($users);
-
+*/
+        return redirect('admin/consultas');
     }
 
     /**
@@ -86,15 +88,15 @@ class ConsultasController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,array(
-                'paciente'      =>      'required',
-                'personal'      =>      'required'
+                'paciente'      =>      'required'
+                //'personal'      =>      'required'
                 ));
         
         try {
             $consulta = new Consulta;
             DB::beginTransaction();
             $consulta->paciente_id          = $request->input('paciente');
-            $consulta->usuario_id          = $request->input('personal');
+            //$consulta->usuario_id          = $request->input('personal');
             if($consulta->save()){
                 DB::commit();
                 //Log::info('Se ha registrado una nueva solicitud de '.$datos_usuario->nombre.', '.$datos_usuario->apellido);
@@ -114,7 +116,7 @@ class ConsultasController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     *///En esta funcion actualizara la connsulta al estado en proceso y actualizara el id del usuario, en la tabla consulta
     public function show($id)
     {
         
@@ -139,15 +141,16 @@ class ConsultasController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     *///Esta funcion no  se utiliza, solo redirecciona al index
     public function edit($id)
     {
+        /*
         $consulta = Consulta::find($id);
         $pacientes = Paciente::select(DB::raw("CONCAT(nombre,' ',apellido,' --- ',dpi,'  ---   ',fech_na) AS nombre"),'id')->pluck('nombre', 'id');
         $users=DB::select('Call Doctores();');
         $users= array_pluck($users,'nombre','id');
-        return view('admin.consulta.edit')->with('pacientes',$pacientes)->with('users',$users)->with('consulta',$consulta);
-
+        return view('admin.consulta.edit')->with('pacientes',$pacientes)->with('users',$users)->with('consulta',$consulta);*/
+        return redirect('admin/consultas');
     }
 
     /**
@@ -156,9 +159,9 @@ class ConsultasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     *///Esta funcion no se utiliza, solo redirecciona al index
     public function update(Request $request, $id)
-    {
+    {/*
        $this->validate($request,array(
                 'paciente'      =>      'required',
                 'personal'      =>      'required'
@@ -181,7 +184,7 @@ class ConsultasController extends Controller
         } catch (Exception $e) {
             DB::rollback();
             Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
-        }
+        }*/
         return redirect('admin/consultas');
 
 
