@@ -19,12 +19,19 @@
 						<div class="container">
 							<div class="row">
 								<a href="{{route('pacientes.create')}}" class="btn btn-primary">Agregar Paciente</a>
+								<a href="{{url('admin/ExportarPacientes')}}" class="btn btn-success">Exportar Excel</a>
 								{!! Form::open(['pacientes.index','method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
 									<div class="input-group">
 										{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Paciente','aria-describedby'=>'search'])!!}
 										<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
 									</div>
 								{!! Form::close() !!}
+							<hr>
+									<form action="ImportarPacientes" method="POST" enctype="multipart/form-data">
+										{!!Form::file('file');!!}
+										<input type="hidden" value="{{csrf_token()}}" name="_token">
+										<button class="btn btn-warning" type="submit">Cargar Archivo</button>
+									</form>
 							</div>
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">

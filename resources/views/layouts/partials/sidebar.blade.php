@@ -46,9 +46,11 @@
                 @endif
                 @if(Auth::user()->type =='admin' || Auth::user()->type =='doctor')
                 <li class="treeview">
-                    <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class='fa fa-male'></i> <span> Consulta </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
+                        <li><a href="{{ url('admin/consulta') }}">Consultas Pendientes</a></li>
+                        <li><a href="{{url('admin/historial')}}">Historial de  Consulta</a></li>
                     </ul>
                 </li>
             
@@ -59,8 +61,7 @@
                     <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
-                        <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
-                        <li><a href="{{url('admin/historial')}}">Historial de  Consulta</a></li>
+                        
                     </ul>
                 </li>
             
@@ -80,8 +81,8 @@
                 <li class="treeview">
                     <a href="#"><i class='fa fa-female'></i> <span> Enfermeras </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
+                        <li><a href="#">Calendario</a></li>
+                        <li><a href="{{url('admin/preconsulta')}}">Pre Consulta</a></li>
                     </ul>
                 </li>
                 @endif

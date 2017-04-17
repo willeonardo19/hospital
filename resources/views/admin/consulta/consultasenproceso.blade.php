@@ -13,26 +13,10 @@
 		<div class="row">
 			<div class="col-md-12 ">
 				<div class="panel panel-primary">
-					<div class="panel-heading"><h4>Registro de Consulta</h4></div>
+					<div class="panel-heading"><h4>Consultas Pendientes</h4></div>
 					<div class="panel-body">
 						<div class="container-fluid">
-							@if(Auth::user()->type =='admin' || Auth::user()->type =='secretaria' )
-							<div class="col-md-10 col-md-offset-1">
-								{!! Form::open(['route'=>'consultas.store','method'=>'POST']) !!}	  
-									<div class="form-group col-md-6 ">
-										{!! Form::label('title','Paciente')!!}
-										{!! Form::select('paciente',$pacientes,null,['class'=>'form-control select-paciente']) !!}
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											{!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
-										</div>
-									</div>
-								{!! Form::close() !!}	
-								
-							</div>
-							@endif
-					
+							
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1">
 									<hr>
@@ -40,6 +24,7 @@
 										<thead>
 											<th>#</th>
 											<th>Paciente</th>
+											
 											<th>Estado</th>
 											<th>Opciones</th>
 										</thead>

@@ -44,19 +44,31 @@ class ConsultasController extends Controller
        //dd($consultas);
         return view('admin.consulta.historialConsultas')->with('consultas',$consultas);
     }
-    //Vista para las consultas, donde se muestra las consultas asignadas al usuario doctor
-   /* public function consulta_medica()
+    //vista para las consultas en estado solicitadas, la enfermera debera generar la preconsulta.
+    public function pre_consulta()
     {
-        //$consultas = Consulta::orderBy('estado','ASC')->where('usuario_id','=' ,Auth::user()->id)->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
-         $consultas = Consulta::orderBy('estado','ASC')->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
+        $consultas = Consulta::orderBy('estado','ASC')->where('created_at','like' ,date("Y-m-d").'%')->where('estado','=' ,'solicitada')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
-            $consultas->usuario;
+            //$consultas->usuario;
         });
+        
+       //dd($consultas);
+        return view('admin.consulta.consultassolicitadas')->with('consultas',$consultas);
+    }
+    //Vista para las consultas en estado de proceso, las cuales ya cuentan con una preconsulta, listas para ser atendidas por el medico
+    public function consulta_medica()
+    {
+        $consultas = Consulta::orderBy('estado','ASC')->where('created_at','like' ,date("Y-m-d").'%')->where('estado','=' ,'proceso')->paginate(10);
+        $consultas->each(function($consultas){
+            $consultas->paciente;
+            //$consultas->usuario;
+        });
+        
+       //dd($consultas);
+        return view('admin.consulta.consultasenproceso')->with('consultas',$consultas);
+    }
 
-       //dd('');
-        return view('admin.consulta.historialConsultas')->with('consultas',$consultas);
-    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -136,6 +148,24 @@ class ConsultasController extends Controller
        return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
     }
 
+    public function registro_preconsulta($id)
+    {
+        
+        $paciente = Paciente::find($id);
+        $edad = Carbon::createFromDate(
+            date('Y',strtotime($paciente->fech_na)),
+            date('m',strtotime($paciente->fech_na)),
+            date('d',strtotime($paciente->fech_na)))->age;
+
+        $fecha = Carbon::createFromDate(
+            date('Y',strtotime($paciente->fech_na)),
+            date('m',strtotime($paciente->fech_na)),
+            date('d',strtotime($paciente->fech_na)))
+            ->format('d - m - Y');
+        
+       //dd($paciente2);
+       return view('admin.consulta.preconsulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
+    }
     /**
      * Show the form for editing the specified resource.
      *

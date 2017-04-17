@@ -42,6 +42,7 @@
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
+										<a href="{{ url('admin/usuarios') }}" class="btn btn-warning">Cancelar</a>	
 										{!! Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
 									</div>
 								</div>

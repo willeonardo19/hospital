@@ -10,7 +10,7 @@ class personalSeeder extends Seeder
      * @return void
      */
     public function run()
-    {/*
+    {
          DB::table('personal')->insert([
         	'nombre'			=> 	'Wilson',
         	'apellido'			=>	'Leonardo',
@@ -23,7 +23,7 @@ class personalSeeder extends Seeder
             'contacttel'        =>  '41062089',
         	'created_at' 		=> date("Y-m-d H:i:s") 
         	]);
-         DB::table('personal')->insert([
+        /* DB::table('personal')->insert([
             'nombre'            =>  'Milsy',
             'apellido'          =>  'Cordova',
             'telefono'          =>  '42415635',
@@ -108,6 +108,6 @@ class personalSeeder extends Seeder
             'created_at'        => date("Y-m-d H:i:s") 
             ]);*/
 
-            factory(hospital\Personal::class,20)->create();
+            //factory(hospital\Personal::class,20)->create();
     }
 }

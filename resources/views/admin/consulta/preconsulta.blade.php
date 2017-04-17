@@ -15,10 +15,10 @@
 				<div class="panel panel-">
 					<div class="panel-body">
 						<div class="container-fluid">
-							<h4><strong>Diagnóstico Médico</strong></h4>
+							<h4><strong>Pre Consulta</strong></h4>
 							<hr>
 							<div class="panel panel-primary">
-								<div class="panel-heading"><h4><strong>Información personal del paciente</strong></h4></div>
+								<div class="panel-heading"><h5><strong>Información personal del paciente</strong></h5></div>
 								<div class="panel-body">
 									<p>
 										<div class="form-group col-md-4">
