@@ -21,7 +21,7 @@ class ConsultasController extends Controller
     public function index()
     {
         //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
-        $consultas = Consulta::orderBy('estado','ASC')->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
+        $consultas = Consulta::orderBy('estado', 'ASC')->orderBy('id', 'ASC')->where('created_at','like' ,date("Y-m-d").'%')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
             //$consultas->usuario;
@@ -35,7 +35,7 @@ class ConsultasController extends Controller
     public function historial_consultas()
     {
         //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
-        $consultas = Consulta::orderBy('estado','ASC')->paginate(10);
+        $consultas = Consulta::orderBy('created_at','ASC')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
             $consultas->usuario;
@@ -147,7 +147,7 @@ class ConsultasController extends Controller
        //dd($paciente2);
        return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
     }
-
+    ///esta funcion retorna la informacion del paciente y  las preconsultas del paciente seleccionado
     public function registro_preconsulta($id)
     {
         

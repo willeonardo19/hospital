@@ -16,10 +16,12 @@ class CreateConsultaTable extends Migration
         Schema::create('consulta', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('paciente_id')->unsigned();
-            $table->integer('usuario_id')->unsigned()->nullable();
+            $table->integer('preconsulta_id')->unsigned()->nullable();
+            $table->integer('diagnostico_med_id')->unsigned()->nullable();
             $table->enum('estado',['solicitada','proceso','finalizada'])->default('solicitada');
             $table->foreign('paciente_id')->references('id')->on('paciente')->onUpdate('cascade') ->onDelete('restrict');
-            $table->foreign('usuario_id')->references('id')->on('users')->onUpdate('cascade') ->onDelete('restrict');
+            $table->foreign('preconsulta_id')->references('id')->on('preconsulta')->onUpdate('cascade') ->onDelete('restrict');
+            $table->foreign('diagnostico_med_id')->references('id')->on('diagnostico_medico')->onUpdate('cascade') ->onDelete('restrict');
             $table->timestamps();
             $table->softDeletes();
         });

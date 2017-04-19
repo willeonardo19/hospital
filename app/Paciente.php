@@ -12,6 +12,7 @@ class Paciente extends Model
 	protected $table ="paciente";
     protected $fillable =[
     	'cod_pac',
+        'dpi',
     	'nombre',
     	'apellido',
     	'telefono',
@@ -19,7 +20,9 @@ class Paciente extends Model
     	'sexo',
     	'est_civ',
         'ocupacion',
-    	'direccion'
+    	'direccion',
+        'contacemer',
+        'contacttel'
     ];
 public function scopeSearch($query,$buscar)
     {

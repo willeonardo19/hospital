@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use Excel;
 use Illuminate\Support\Facades\Input;
 use hospital\Personal;
+use hospital\User;
+use hospital\Paciente;
 use Laracasts\Flash\Flash;
 
 class ExcelController extends Controller
 {
+    //Exportar excel
     public function ExportarPersonal()
     {
     	Excel::create('Personal',function($excel){
@@ -34,54 +37,65 @@ class ExcelController extends Controller
     		});
     	})->export('xlsx');
     }
-
+    //Importar Excel
     public function ImportarPersonal()
     {	
-    	try {
-    		Excel::load(Input::file('file'),function($reader){
-	    		$reader->each(function($sheet){
-	    			//foreach($sheet->toArray() as $row){
-	    				Personal::firstOrCreate($sheet->toArray());
-	    			//}
-	    		});
-	    	});
-	    	Flash::success('Registros creados con éxito');
-    	} catch (Exception $e) {
-    		Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
-    	}
-    	
+    	if(Input::file('file')!=null){
+            try {
+        		Excel::load(Input::file('file'),function($reader){
+    	    		$reader->each(function($sheet){
+    	    			//foreach($sheet->toArray() as $row){
+    	    				Personal::firstOrCreate($sheet->toArray());
+    	    			//}
+    	    		});
+    	    	});
+    	    	Flash::success('Registros creados con éxito');
+        	} catch (Exception $e) {
+        		Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+        	}
+    	}else{
+            Flash::error('Debe de seleccionar un archivo para importar'); 
+        }
     	return redirect('admin/personal');
     }
     public function ImportarUsuarios()
     {   
-        try {
-            Excel::load(Input::file('file'),function($reader){
-                $reader->each(function($sheet){
-                    //foreach($sheet->toArray() as $row){
-                        User::firstOrCreate($sheet->toArray());
-                    //}
+        if(Input::file('file')!=null){
+            try {
+                Excel::load(Input::file('file'),function($reader){
+                    $reader->each(function($sheet){
+                        //foreach($sheet->toArray() as $row){
+                            User::firstOrCreate($sheet->toArray());
+                        //}
+                    });
                 });
-            });
-            Flash::success('Registros creados con éxito');
-        } catch (Exception $e) {
-            Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+                Flash::success('Registros creados con éxito');
+            } catch (Exception $e) {
+                Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+            }
+        }else{
+            Flash::error('Debe de seleccionar un archivo para importar'); 
         }
         
         return redirect('admin/usuarios');
     }
     public function ImportarPacientes()
     {   
-        try {
-            Excel::load(Input::file('file'),function($reader){
-                $reader->each(function($sheet){
-                    //foreach($sheet->toArray() as $row){
-                        Paciente::firstOrCreate($sheet->toArray());
-                    //}
+        if(Input::file('file')!=null){
+            try {
+                Excel::load(Input::file('file'),function($reader){
+                    $reader->each(function($sheet){
+                        //foreach($sheet->toArray() as $row){
+                            Paciente::firstOrCreate($sheet->toArray());
+                        //}
+                    });
                 });
-            });
-            Flash::success('Registros creados con éxito');
-        } catch (Exception $e) {
-            Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+                Flash::success('Registros creados con éxito');
+            } catch (Exception $e) {
+                Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+            }
+        }else{
+            Flash::error('Debe de seleccionar un archivo para importar'); 
         }
         
         return redirect('admin/pacientes');

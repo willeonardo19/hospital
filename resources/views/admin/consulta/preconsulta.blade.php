@@ -87,23 +87,14 @@
 								</div>
 							</div>
 							<div class="col-md-12 ">
-							<div class="panel panel-primary">
-							<div class="panel-heading"><h4><strong>Historial clinico</strong></h4></div>
-								<div class="panel-body">
-								<table class="table">
-								    <thead>
-								      <tr>
-								        <th>Diagnóstico</th>
-								        <th>Fecha</th>
-								        <th>Detalles</th>
-								      </tr>
-								    </thead>
-								    <tbody>
-								      
-								    </tbody>
-								  </table>
-								 </div>
-								 </div>
+								<div class="panel panel-primary">
+									<div class="panel-heading"><h4><strong>Pre Consultas</strong></h4></div>
+										<div class="panel-body">
+											<table class="table">
+								    			
+								  			</table>
+								 		</div>
+								</div>
 							</div>
 						</div>
 					</div>

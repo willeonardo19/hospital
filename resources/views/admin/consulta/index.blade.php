@@ -39,6 +39,7 @@
 									<table class="table table-hover">
 										<thead>
 											<th>#</th>
+											<th>id</th>
 											<th>Paciente</th>
 											<th>Estado</th>
 											<th>Opciones</th>
@@ -46,6 +47,7 @@
 										<tbody>
 										@foreach($consultas as $consulta)
 											<tr>
+												<td>{{ $consulta->index }}</td>
 												<td>{{ $consulta->id }}</td>
 												<td>{{ $consulta->paciente->nombre.', '.$consulta->paciente->apellido }}</td>
 												

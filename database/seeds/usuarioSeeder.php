@@ -21,7 +21,7 @@ class usuarioSeeder extends Seeder
         	'created_at' 		=> 	date("Y-m-d H:i:s") 
         	]);
          //usuario Administrador de Clinica
-         /*DB::table('users')->insert([
+         DB::table('users')->insert([
             'user'              =>  'administracion',
             'email'             =>  'administracion@gmail.com',
             'password'          =>  bcrypt('administracion.'),
@@ -143,6 +143,6 @@ class usuarioSeeder extends Seeder
             'type'              =>  'member',
             'personal_id'       =>  '8',
             'created_at'        =>  date("Y-m-d H:i:s") 
-            ]);*/
+            ]);
     }
 }

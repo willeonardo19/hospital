@@ -70,7 +70,8 @@ $factory->define(Paciente::class, function(Generator $faker){
 $factory->define(Consulta::class, function(Generator $faker){
 		$array	=	[
 			'paciente_id'			=>		$faker->numberBetween(1,100),
-			'usuario_id'			=>		null,
+			'preconsulta_id'		=>		null,
+			'diagnostico_med_id'	=>		null,
 			'estado'				=>		'solicitada'
 			
 		];
@@ -78,3 +79,27 @@ $factory->define(Consulta::class, function(Generator $faker){
 		return $array;
 
 });
+$factory->define(Consulta::class, function(Generator $faker){
+		$array	=	[
+			'paciente_id'			=>		$faker->numberBetween(1,100),
+			'preconsulta_id'		=>		null,
+			'diagnostico_med_id'	=>		null,
+			'estado'				=>		'proceso'
+			
+		];
+
+		return $array;
+
+});
+/*$factory->define(Consulta::class, function(Generator $faker){
+		$array	=	[
+			'paciente_id'			=>		$faker->numberBetween(1,100),
+			'preconsulta_id'		=>		null,
+			'diagnostico_med_id'	=>		null,
+			'estado'				=>		'finalizada'
+			
+		];
+
+		return $array;
+
+});*/

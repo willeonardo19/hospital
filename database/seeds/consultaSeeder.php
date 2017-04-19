@@ -11,23 +11,19 @@ class consultaSeeder extends Seeder
      */
     public function run()
     {
-   /* DB::table('consulta')->insert([
+    DB::table('consulta')->insert([
 	'paciente_id'			=> 	'1',
-	'usuario_id'			=> 	null,
+	'preconsulta_id'		=>		null,
+	'diagnostico_med_id'	=>		null,
 	'estado'			=> 	'finalizada',
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::yesterday() 
 	]);
-	 DB::table('consulta')->insert([
-	'paciente_id'			=> 	'2',
-	'usuario_id'			=> 	null,
-	'estado'			=> 	'finalizada',
-	//'antecedentes'		=>	'Ninguno',
-	'created_at' 		=> Carbon::yesterday() 
-	]);
+	 /*
 	DB::table('consulta')->insert([
 	'paciente_id'			=> 	'3',
-	'usuario_id'			=> 	null,
+	'preconsulta_id'		=>		null,
+	'diagnostico_med_id'	=>		null,
 	'estado'			=> 	'finalizada',
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::yesterday()
@@ -54,5 +50,13 @@ class consultaSeeder extends Seeder
 	'created_at' 		=> Carbon::now() 
 	]);*/
 	factory(hospital\Consulta::class,30)->create();
+	DB::table('consulta')->insert([
+	'paciente_id'			=> 	'1',
+	'preconsulta_id'		=>		null,
+	'diagnostico_med_id'	=>		null,
+	'estado'			=> 	'finalizada',
+	//'antecedentes'		=>	'Ninguno',
+	'created_at' 		=> Carbon::yesterday() 
+	]);
     }
 }
