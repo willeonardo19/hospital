@@ -11,7 +11,7 @@ class consultaSeeder extends Seeder
      */
     public function run()
     {
-    DB::table('consulta')->insert([
+   DB::table('consulta')->insert([
 	'paciente_id'			=> 	'1',
 	'preconsulta_id'		=>		null,
 	'diagnostico_med_id'	=>		null,
@@ -19,7 +19,7 @@ class consultaSeeder extends Seeder
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::yesterday() 
 	]);
-	 /*
+	 
 	DB::table('consulta')->insert([
 	'paciente_id'			=> 	'3',
 	'preconsulta_id'		=>		null,
@@ -30,33 +30,37 @@ class consultaSeeder extends Seeder
 	]);
 	DB::table('consulta')->insert([
 	'paciente_id'			=> 	'1',
-	'usuario_id'			=> 	null,
+	'preconsulta_id'		=>		null,
+	'diagnostico_med_id'	=>		null,
 	'estado'			=> 	'proceso',
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::now()
 	]);
 	DB::table('consulta')->insert([
 	'paciente_id'			=> 	'2',
-	'usuario_id'			=> 	null,
-	'estado'			=> 	'solicitada',
+	'preconsulta_id'		=>		null,
+	'diagnostico_med_id'	=>		null,
+	'estado'			=> 	'proceso',
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::now() 
 	]);
 	DB::table('consulta')->insert([
 	'paciente_id'			=> 	'3',
-	'usuario_id'			=> 	null,
-	'estado'			=> 	'solicitada',
+	'preconsulta_id'		=>		null,
+	'diagnostico_med_id'	=>		null,
+	'estado'			=> 	'proceso',
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::now() 
-	]);*/
-	factory(hospital\Consulta::class,30)->create();
+	]);
+	
 	DB::table('consulta')->insert([
 	'paciente_id'			=> 	'1',
 	'preconsulta_id'		=>		null,
 	'diagnostico_med_id'	=>		null,
-	'estado'			=> 	'finalizada',
+	'estado'			=> 	'proceso',
 	//'antecedentes'		=>	'Ninguno',
-	'created_at' 		=> Carbon::yesterday() 
+	'created_at' 		=> Carbon::now() 
 	]);
+	factory(hospital\Consulta::class,30)->create();
     }
 }

@@ -42,7 +42,7 @@
 								</div>
 								<div class="form-group col-md-6">
 									{!! Form::label('title','Fecha de Nacimiento')!!}
-									{!! Form::date('fechna',null,['class'=>'form-control','placeholder'=>'DPI','required']) !!}
+									{!! Form::date('fechna',null,['class'=>'form-control','required']) !!}
 								</div>
 								<div class="form-group col-md-6">
 									{!! Form::label('title','Sexo')!!}

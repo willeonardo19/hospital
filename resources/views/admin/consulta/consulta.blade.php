@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Consultas
+	Diagnóstico Médico
 @endsection
 
 @section('contentheader_title')
@@ -15,20 +15,19 @@
 				<div class="panel panel-">
 					<div class="panel-body">
 						<div class="container-fluid">
-							<h4><strong>Diagnóstico Médico</strong></h4>
-							<hr>
+							<h4>Diagnóstico Médico</h4>
+							
 							<div class="panel panel-primary">
-								<div class="panel-heading"><h4><strong>Información personal del paciente</strong></h4></div>
+								<div class="panel-heading"><strong>Información personal del paciente</strong></div>
 								<div class="panel-body">
-									<p>
+								
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Código paciente: '.$paciente->cod_pac)!!}
 										</div>
 										<div class="form-group col-md-6">
 											{!! Form::label('title','DPI: '.$paciente->dpi)!!}
 										</div>
-									</p>
-									<p>
+
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Nombre: '. $paciente->nombre.', '.$paciente->apellido)!!}
 										</div>
@@ -39,8 +38,6 @@
 											{!! Form::label('title','Edad: '.$edad)!!}
 										</div>
 
-									</p>
-									<p>
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Fecha de Nacimiento: '.$fecha)!!}
 										</div>
@@ -65,31 +62,28 @@
 
 											@endif
 										</div>
-									</p>
-									<p>
+									
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Ocupación: '.$paciente->ocupacion)!!}
 										</div>
 										<div class="form-group col-md-6">
 											{!! Form::label('title','Dirección: '.$paciente->direccion)!!}
 										</div>
-									</p>
-									<p>
+									
+							
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Contacto de emergencia: '.$paciente->contacemer)!!}
 										</div>
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Teléfono de emergencia: '.$paciente->contacttel)!!}
 										</div>
-										
-									</p>
+										<hr>
+
 
 								</div>
-							</div>
-							<div class="col-md-12 ">
-							<div class="panel panel-primary">
-							<div class="panel-heading"><h4><strong>Historial clinico</strong></h4></div>
+							<div class="panel-heading"><strong>Historial clinico</strong></div>
 								<div class="panel-body">
+								<div><a href="{{url('admin/diagnostico/create').'?paciente='.$paciente->id.'&consulta='.$consulta_id}}" class="btn btn-success">Nuevo Diagnóstico</a></div>
 								<table class="table">
 								    <thead>
 								      <tr>
@@ -102,9 +96,9 @@
 								      
 								    </tbody>
 								  </table>
-								 </div>
-								 </div>
+								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>

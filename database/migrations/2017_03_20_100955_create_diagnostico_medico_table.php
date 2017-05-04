@@ -15,9 +15,14 @@ class CreateDiagnosticoMedicoTable extends Migration
     {
         Schema::create('diagnostico_medico', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('paciente_id')->unsigned();
+            $table->foreign('paciente_id')->references('id')->on('paciente')->onUpdate('cascade') ->onDelete('restrict');
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('users')->onUpdate('cascade') ->onDelete('restrict');
-            $table->string('resultados');
+            $table->string('motivo_cons');
+            $table->string('hist_enfermedad');
+            $table->string('imp_clinica');
+            $table->string('tratamiento');
             $table->timestamps();
             $table->softDeletes();
         });

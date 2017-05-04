@@ -19,11 +19,11 @@
 						<div class="container">
 							
 							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
+								<div class="col-xs-12 col-sm-10 col-md-10  col-lg-12 ">
 									<hr>
 									<table class="table table-hover">
 										<thead>
-											<th>#</th>
+											<th class="hidden-xs">#</th>
 											<th>Paciente</th>
 											<th>Medico</th>
 											<th>Estado</th>
@@ -32,7 +32,7 @@
 										<tbody>
 										@foreach($consultas as $consulta)
 											<tr>
-												<td>{{ $consulta->id }}</td>
+												<td class="hidden-xs">{{ $consulta->id }}</td>
 												<td>{{ $consulta->paciente->nombre.', '.$consulta->paciente->apellido }}</td>
 												@if($consulta->usuario==null)
 													<td>Sin dato</td>

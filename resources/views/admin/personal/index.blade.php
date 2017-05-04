@@ -37,26 +37,26 @@
 								
 								
 							</div>
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
+							<div class="container">
+								<div class="col-xs-12 col-sm-12 col-md-10 col-lg-12">
 									<hr>
 									<table class="table table-hover">
 										<thead>
-											<th>#</th>
+											<th class="hidden-xs">#</th>
 											<th>Nombre</th>
 											<th>Teléfono</th>
-											<th>Dirección</th>
-											<th>DPI</th>
+											<th class="hidden-xs hidden-sm hidden-md">Dirección</th>
+											<th class="hidden-xs hidden-sm hidden-md">DPI</th>
 											<th>Opciones</th>
 										</thead>
 										<tbody>
 										@foreach($personal as $persona)
 											<tr>
-												<td>{{ $persona->id }}</td>
+												<td class="hidden-xs">{{ $persona->id }}</td>
 												<td>{{ $persona->apellido.', '.$persona->nombre }}</td>
 												<td>{{ $persona->telefono }}</td>
-												<td>{{ $persona->direccion }}</td>
-												<td>{{ $persona->dpi }}</td>
+												<td class="hidden-xs hidden-sm hidden-md">{{ $persona->direccion }}</td>
+												<td class="hidden-xs hidden-sm hidden-md">{{ $persona->dpi }}</td>
 												<td>
 													<a href="{{ route('personal.edit',$persona->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
 

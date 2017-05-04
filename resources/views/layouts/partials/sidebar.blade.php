@@ -61,6 +61,7 @@
                     <a href="#"><i class='fa fa-male'></i> <span> Pacientes </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
+                        <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
                         
                     </ul>
                 </li>

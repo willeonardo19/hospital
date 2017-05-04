@@ -58,6 +58,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 			'uses'		=>	'ConsultasController@destroy',
 			'as'		=>	'consultas.destroy'
 		]);
+	Route::resource('preconsultas','PreconsultasController');
+	Route::resource('diagnostico','DiagnosticosController');
 
 
 });

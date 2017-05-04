@@ -33,38 +33,39 @@
 										<button class="btn btn-warning" type="submit">Cargar Archivo</button>
 									</form>
 							</div>
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
+							<div class="container">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								
 									<hr>
-									<table class="table table-hover">
+									<table class="table ">
 										<thead>
-											<th>#</th>
+											<th >#</th>
 											<th>Usuario</th>
-											<th>Rol</th>
-											<th>Asignado a</th>
+											<th class="hidden-xs">Rol</th>
+											<th class="hidden-xs">Asignado a</th>
 											<th>Opciones</th>
 										</thead>
 										<tbody>
 										@foreach($users as $user)
 											<tr>
-												<td>{{ $user->id }}</td>
+												<td >{{ $user->id }}</td>
 												<td>{{ $user->user }}</td>
 											@if($user->type=='admin')
-												<td><span class="label label-primary">{{ 'LeoSoft' }}</span></td>
+												<td class="hidden-xs"><span class="label label-primary">{{ 'LeoSoft' }}</span></td>
 											@elseif ($user->type=='administracion')
-												<td><span class="label label-info">{{ 'Administrador' }}</span></td>
+												<td class="hidden-xs"><span class="label label-info">{{ 'Administrador' }}</span></td>
 											@elseif ($user->type=='laboratorio')
-												<td><span class="label label-success">{{ 'Laboratorio' }}</span></td>
+												<td class="hidden-xs"><span class="label label-success">{{ 'Laboratorio' }}</span></td>
 											@elseif ($user->type=='doctor')
-												<td><span class="label label-danger">{{ 'Doctor' }}</span></td>
+												<td class="hidden-xs"><span class="label label-danger">{{ 'Doctor' }}</span></td>
 											@elseif ($user->type=='enfermera')
-												<td><span class="label label-warning">{{ 'Enfermera' }}</span></td>
+												<td class="hidden-xs"><span class="label label-warning">{{ 'Enfermera' }}</span></td>
 											@elseif ($user->type=='secretaria')
-												<td><span class="label label-default">{{ 'Secretaria' }}</span></td>
+												<td class="hidden-xs"><span class="label label-default">{{ 'Secretaria' }}</span></td>
 											@elseif ($user->type=='member')
-												<td><span class="label label-info">{{ 'Equipo' }}</span></td>
+												<td class="hidden-xs"><span class="label label-info">{{ 'Equipo' }}</span></td>
 											@endif
-												<td>{{ $user->personal->nombre.' '.$user->personal->apellido }}</td>
+												<td class="hidden-xs">{{ $user->personal->nombre.' '.$user->personal->apellido }}</td>
 												<td>
 													<a href="{{ route('usuarios.edit',$user->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
 
@@ -74,14 +75,14 @@
 										@endforeach
 										</tbody>
 								  	</table>
-								</div>
+									</div>
 								<div class="text-center">
   									{!! $users->render() !!}
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

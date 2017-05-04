@@ -79,7 +79,7 @@ $factory->define(Consulta::class, function(Generator $faker){
 		return $array;
 
 });
-$factory->define(Consulta::class, function(Generator $faker){
+/*$factory->define(Consulta::class, function(Generator $faker){
 		$array	=	[
 			'paciente_id'			=>		$faker->numberBetween(1,100),
 			'preconsulta_id'		=>		null,
@@ -91,7 +91,7 @@ $factory->define(Consulta::class, function(Generator $faker){
 		return $array;
 
 });
-/*$factory->define(Consulta::class, function(Generator $faker){
+$factory->define(Consulta::class, function(Generator $faker){
 		$array	=	[
 			'paciente_id'			=>		$faker->numberBetween(1,100),
 			'preconsulta_id'		=>		null,

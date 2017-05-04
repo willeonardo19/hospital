@@ -13,8 +13,6 @@
 		<div class="row">
 			<div class="col-md-12 ">
 				<div class="panel panel-">
-					
-
 					<div class="panel-body">
 						<div class="container-fluid">
 							<h1>Editar de Personal</h1>

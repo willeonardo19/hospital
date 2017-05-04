@@ -34,12 +34,12 @@
 							@endif
 					
 							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
+								<div class="col-md-12 col-lg-10 col-lg-offset-1">
 									<hr>
 									<table class="table table-hover">
 										<thead>
 											<th>#</th>
-											<th>id</th>
+											
 											<th>Paciente</th>
 											<th>Estado</th>
 											<th>Opciones</th>
@@ -47,7 +47,7 @@
 										<tbody>
 										@foreach($consultas as $consulta)
 											<tr>
-												<td>{{ $consulta->index }}</td>
+												
 												<td>{{ $consulta->id }}</td>
 												<td>{{ $consulta->paciente->nombre.', '.$consulta->paciente->apellido }}</td>
 												

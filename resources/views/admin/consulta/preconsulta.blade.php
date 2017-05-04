@@ -1,3 +1,4 @@
+<!-- Formulario de registro de preconsulta utilizado por la enfermera-->
 @extends('layouts.app')
 
 @section('htmlheader_title')
@@ -16,19 +17,19 @@
 					<div class="panel-body">
 						<div class="container-fluid">
 							<h4><strong>Pre Consulta</strong></h4>
-							<hr>
+
 							<div class="panel panel-primary">
-								<div class="panel-heading"><h5><strong>Información personal del paciente</strong></h5></div>
+								<div class="panel-heading"><strong>Información personal del paciente</strong></div>
 								<div class="panel-body">
-									<p>
+									
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Código paciente: '.$paciente->cod_pac)!!}
 										</div>
 										<div class="form-group col-md-6">
 											{!! Form::label('title','DPI: '.$paciente->dpi)!!}
 										</div>
-									</p>
-									<p>
+									
+									
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Nombre: '. $paciente->nombre.', '.$paciente->apellido)!!}
 										</div>
@@ -39,8 +40,7 @@
 											{!! Form::label('title','Edad: '.$edad)!!}
 										</div>
 
-									</p>
-									<p>
+									
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Fecha de Nacimiento: '.$fecha)!!}
 										</div>
@@ -65,16 +65,8 @@
 
 											@endif
 										</div>
-									</p>
-									<p>
-										<div class="form-group col-md-4">
-											{!! Form::label('title','Ocupación: '.$paciente->ocupacion)!!}
-										</div>
-										<div class="form-group col-md-6">
-											{!! Form::label('title','Dirección: '.$paciente->direccion)!!}
-										</div>
-									</p>
-									<p>
+									
+									
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Contacto de emergencia: '.$paciente->contacemer)!!}
 										</div>
@@ -82,20 +74,78 @@
 											{!! Form::label('title','Teléfono de emergencia: '.$paciente->contacttel)!!}
 										</div>
 										
-									</p>
+									
 
 								</div>
-							</div>
-							<div class="col-md-12 ">
-								<div class="panel panel-primary">
-									<div class="panel-heading"><h4><strong>Pre Consultas</strong></h4></div>
+							
+									<div class="panel-heading"><strong>Registrar Pre Consulta de {{$paciente->nombre.', '.$paciente->apellido}}</strong></div>
 										<div class="panel-body">
 											<table class="table">
-								    			
+								    			{!! Form::open(['route'=>'preconsultas.store','method'=>'POST']) !!}	  
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Temperatura Oral')!!}
+														{!! Form::text('temp_oral',null,['class'=>'form-control','placeholder'=>'Temperatura Oral','required']) !!}
+														{{ Form::hidden('paciente_id', $paciente->id) }}
+														{{ Form::hidden('consulta_id', $consulta_id) }}
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Presión Arterial')!!}
+														{!! Form::text('pr_arterial',null,['class'=>'form-control','placeholder'=>'Presión Arterial','required']) !!}
+														
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Frecuencia Cardíaca')!!}
+														{!! Form::text('fr_cardiaca',null,['class'=>'form-control','placeholder'=>'Frecuencia Cardíaca','required']) !!}
+														
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Frecuencia Respiratoria')!!}
+														{!! Form::text('fr_respiratoria',null,['class'=>'form-control','placeholder'=>'Frecuencia Respiratoria','required']) !!}
+														
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Peso')!!}
+														{!! Form::text('peso',null,['class'=>'form-control','placeholder'=>'Peso en libras','required']) !!}
+														
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Talla')!!}
+														{!! Form::text('talla',null,['class'=>'form-control','placeholder'=>'Talla en centímetros','required']) !!}
+														
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','AU')!!}
+														{!! Form::text('au',null,['class'=>'form-control','placeholder'=>'AU','required']) !!}
+														
+
+													</div>
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','FCF')!!}
+														{!! Form::text('fcf',null,['class'=>'form-control','placeholder'=>'FCF','required']) !!}
+														
+
+													</div>
+
+
+
+													<div class="col-md-12">
+														<div class="form-group">
+
+															{!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
+														</div>
+													</div>
+												{!! Form::close() !!}	
+								
 								  			</table>
 								 		</div>
 								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -43,7 +43,7 @@
 												@endif
 												<td>
 													@if(Auth::user()->type =='admin' || Auth::user()->type =='enfermera' )
-														<a href="{{ route('consultas.registropreconsulta',$consulta->paciente_id) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
+														<a href="{{ route('consultas.registropreconsulta',$dato=array('paciente'=>$consulta->paciente_id,'consulta'=>$consulta->id)) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
 													@else
 														<a href="{{ route('consultas.edit',$consulta->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
 														<a href="{{ route('consultas.destroy',$consulta->id) }}" onClick="return confirm('¿Desea eliminar esta consulta?')" class="btn btn-danger glyphicon glyphicon-trash"></a>

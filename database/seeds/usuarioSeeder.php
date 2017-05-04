@@ -136,11 +136,12 @@ class usuarioSeeder extends Seeder
             'personal_id'       =>  '5',
             'created_at'        =>  date("Y-m-d H:i:s") 
             ]);
+        //secretaria
          DB::table('users')->insert([
-            'user'              =>  'paraeliminar',
-            'email'             =>  'paraeliminar@gmail.com',
-            'password'          =>  bcrypt('eliminar.'),
-            'type'              =>  'member',
+            'user'              =>  'secretaria',
+            'email'             =>  'secretaria@gmail.com',
+            'password'          =>  bcrypt('secretaria.'),
+            'type'              =>  'secretaria',
             'personal_id'       =>  '8',
             'created_at'        =>  date("Y-m-d H:i:s") 
             ]);

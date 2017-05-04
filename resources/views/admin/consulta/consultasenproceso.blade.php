@@ -1,3 +1,4 @@
+<!-- Listado de consultas que se encuentran en solicitado-->
 @extends('layouts.app')
 
 @section('htmlheader_title')
@@ -43,7 +44,7 @@
 												@endif
 												<td>
 													@if(Auth::user()->type =='admin' || Auth::user()->type =='doctor' )
-														<a href="{{ route('consultas.show',$consulta->paciente_id) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
+														<a href="{{ route('consultas.show',$dato=array($consulta->paciente_id,'consulta_id'=>$consulta->id)) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
 													@else
 														<a href="{{ route('consultas.edit',$consulta->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
 														<a href="{{ route('consultas.destroy',$consulta->id) }}" onClick="return confirm('¿Desea eliminar esta consulta?')" class="btn btn-danger glyphicon glyphicon-trash"></a>

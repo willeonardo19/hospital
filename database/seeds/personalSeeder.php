@@ -12,8 +12,8 @@ class personalSeeder extends Seeder
     public function run()
     {
          DB::table('personal')->insert([
-        	'nombre'			=> 	'Wilson',
-        	'apellido'			=>	'Leonardo',
+        	'nombre'			=> 	'Wilson A.',
+        	'apellido'			=>	'Leonardo Tahuico',
         	'telefono'			=>	'41154436',
         	'direccion'			=>	'Salamá, Baja Verapaz',
             'fechna'            =>  '1992-08-19',

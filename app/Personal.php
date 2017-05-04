@@ -24,7 +24,7 @@ class Personal extends Model
 
 public function scopeSearch($query,$buscar)
     {
-        return $query->where('apellido','LIKE',"%$buscar%");
+        return $query->where('apellido','LIKE',"%$buscar%")->orwhere('nombre','LIKE',"%$buscar%");
     }
 //Relacion para determinar que personal le corresponde el usuario
 public function users()

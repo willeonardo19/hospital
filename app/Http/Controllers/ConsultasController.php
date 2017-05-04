@@ -131,7 +131,7 @@ class ConsultasController extends Controller
      *///En esta funcion actualizara la connsulta al estado en proceso y actualizara el id del usuario, en la tabla consulta
     public function show($id)
     {
-        
+        $consulta_id=$_GET['consulta_id'];
         $paciente = Paciente::find($id);
         $edad = Carbon::createFromDate(
             date('Y',strtotime($paciente->fech_na)),
@@ -145,12 +145,14 @@ class ConsultasController extends Controller
             ->format('d - m - Y');
         
        //dd($paciente2);
-       return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
+       return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha)->with('consulta_id',$consulta_id);
     }
     ///esta funcion retorna la informacion del paciente y  las preconsultas del paciente seleccionado
     public function registro_preconsulta($id)
     {
-        
+
+       //;
+        $consulta_id=$_GET['consulta'];
         $paciente = Paciente::find($id);
         $edad = Carbon::createFromDate(
             date('Y',strtotime($paciente->fech_na)),
@@ -164,7 +166,8 @@ class ConsultasController extends Controller
             ->format('d - m - Y');
         
        //dd($paciente2);
-       return view('admin.consulta.preconsulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
+       return view('admin.consulta.preconsulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha)->with('consulta_id',$consulta_id);
+
     }
     /**
      * Show the form for editing the specified resource.
