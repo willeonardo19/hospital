@@ -23,6 +23,7 @@ class CreatePacienteTable extends Migration
             $table->date('fech_na');
             $table->enum('sexo',['masculino','femenino'])->default('masculino');
             $table->enum('est_civ',['soltero','casado','divorciado','viudo','union'])->default('soltero');
+            $table->enum('religion',['catolico','cristiano'])->default('catolico');
             $table->string('ocupacion');
             $table->string('direccion');
             $table->string('contacemer');

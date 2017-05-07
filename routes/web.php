@@ -60,7 +60,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 		]);
 	Route::resource('preconsultas','PreconsultasController');
 	Route::resource('diagnostico','DiagnosticosController');
-
+	Route::resource('laboratorio','LaboratoriosController');
 
 });
 
