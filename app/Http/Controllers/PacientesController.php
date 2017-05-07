@@ -50,6 +50,7 @@ class PacientesController extends Controller
                 'fechna'            =>      'before:tomorrow',
                 'sexo'              =>      'required',
                 'est_civ'           =>      'required',
+                'religion'          =>      'required',
                 'ocupacion'         =>      'min:6|max:200|required',
                 'direccion'         =>      'min:6|max:200|required',
                 'contacemer'        =>      'min:6|max:250|required',
@@ -66,10 +67,11 @@ class PacientesController extends Controller
             $paciente->fech_na          = $request->input('fechna');
             $paciente->sexo             = $request->input('sexo');
             $paciente->est_civ          = $request->input('est_civ');
+            $paciente->religion         = $request->input('religion');
             $paciente->ocupacion        = $request->input('ocupacion');
             $paciente->direccion        = $request->input('direccion');
             $paciente->contacemer       = $request->input('contacemer');
-            $paciente->contacttel       = $request->input('contactel');
+            $paciente->contacttel       = $request->input('contacttel');
             if($paciente->save()){
                     DB::commit();
                     //Log::info('Se ha registrado una nueva solicitud de '.$datos_usuario->nombre.', '.$datos_usuario->apellido);
@@ -138,6 +140,7 @@ class PacientesController extends Controller
                 'fechna'            =>      'before:tomorrow',
                 'sexo'              =>      'required',
                 'est_civ'           =>      'required',
+                'religion'          =>      'required',
                 'ocupacion'         =>      'min:6|max:200|required',
                 'direccion'         =>      'min:6|max:200|required',
                 'contacemer'        =>      'min:6|max:250|required',
@@ -156,10 +159,11 @@ class PacientesController extends Controller
             $paciente->fech_na           = $request->input('fechna'),
             $paciente->sexo              = $request->input('sexo'),
             $paciente->est_civ           = $request->input('est_civ'),
+            $paciente->religion          = $request->input('religion'),
             $paciente->ocupacion         = $request->input('ocupacion'),
             $paciente->direccion         = $request->input('direccion'),
             $paciente->contacemer        = $request->input('contacemer'),
-            $paciente->contacttel        = $request->input('contactel')
+            $paciente->contacttel        = $request->input('contacttel')
                 ]);
 
             if($paciente->save()){

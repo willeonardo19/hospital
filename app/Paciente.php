@@ -19,6 +19,7 @@ class Paciente extends Model
     	'fech_na',
     	'sexo',
     	'est_civ',
+        'religion',
         'ocupacion',
     	'direccion',
         'contacemer',

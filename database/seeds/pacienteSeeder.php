@@ -20,6 +20,7 @@ class pacienteSeeder extends Seeder
         	'fech_na'           =>  '1992-08-19',
         	'sexo'            	=>  'masculino',
         	'est_civ'           =>  'soltero',
+            'religion'          =>  'catolica',
             'ocupacion'       	=>  'Estudiante',
         	'direccion'			=>	'Salamá, Baja Verapaz',
             'contacemer'       =>  'Cundo Leonardo',

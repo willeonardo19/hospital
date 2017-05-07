@@ -70,13 +70,26 @@
 									</p>
 									<p>
 										<div class="form-group col-md-4">
+											@if($paciente->religion == 'catolica')
+												{!! Form::label('title','Religión: Católico(a)')!!}
+											@elseif($paciente->religion == 'cristiana')
+												{!! Form::label('title','Religión: Cristiano(a)')!!}
+											
+											@else
+												{!! Form::label('title','Religión: Otra')!!}
+
+											@endif
+										</div>
+										<div class="form-group col-md-4">
 											{!! Form::label('title','Ocupación: '.$paciente->ocupacion)!!}
 										</div>
-										<div class="form-group col-md-6">
+										<div class="form-group col-md-4">
 											{!! Form::label('title','Dirección: '.$paciente->direccion)!!}
 										</div>
+										
 									</p>
 									<p>
+										
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Contacto de emergencia: '.$paciente->contacemer)!!}
 										</div>

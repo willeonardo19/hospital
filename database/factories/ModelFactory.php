@@ -56,6 +56,7 @@ $factory->define(Paciente::class, function(Generator $faker){
 			'fech_na'			=>		$faker->date,
 			'sexo'				=>		'masculino',
 			'est_civ'			=>		'soltero',
+			'religion'			=>		'catolica',
 			'ocupacion'			=>		$faker->jobTitle,
 			'direccion'			=>		$faker->address,
 			'contacemer'		=>		$faker->firstName.' '.$faker->lastName,

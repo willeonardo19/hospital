@@ -22,7 +22,7 @@ class CreatePreconsultaTable extends Migration
             $table->string('est_conciencia')->nullable();
             $table->string('ant_medicos')->nullable();
             $table->string('ant_quirurgicos')->nullable();
-            $table->string('ant_alegicos')->nullable();
+            $table->string('ant_alergicos')->nullable();
             $table->string('ant_traumaticos')->nullable();
             $table->string('ant_familiares')->nullable();
             $table->string('temp_oral');

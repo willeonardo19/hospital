@@ -54,6 +54,10 @@
 									{!!Form::select('est_civ',['soltero'=>'Soltero','casado'=>'Casado','divorciado'=>'Divorciado','viudo'=>'Viudo','union'=>'Union'],$paciente->est_civ,['class'=>'form-control select-tipo']) !!}
 								</div>
 								<div class="form-group col-md-6">
+									{!! Form::label('title','Religión')!!}
+									{!!Form::select('religion',['catolica'=>'Católica','cristiana'=>'Cristiana'],$paciente->religion,['class'=>'form-control select-estado']) !!}
+								</div>
+								<div class="form-group col-md-6">
 									{!! Form::label('title','Ocupación')!!}
 									{!! Form::text('ocupacion',$paciente->ocupacion,['class'=>'form-control','placeholder'=>'Ocupación','required']) !!}
 								</div>

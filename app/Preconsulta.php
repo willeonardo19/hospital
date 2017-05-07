@@ -12,6 +12,12 @@ class Preconsulta extends Model
     protected $fillable =[
     	'paciente_id',
     	'usuario_id',
+      'est_conciencia',
+      'ant_medicos',
+      'ant_quirurgicos',
+      'ant_alergicos',
+      'ant_traumaticos',
+      'ant_familiares',
   		'temp_oral',
   		'pr_arterial',
   		'fr_cardiaca',
