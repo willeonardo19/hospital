@@ -73,6 +73,9 @@
 
 											@endif
 										</div>
+										<div class="form-group col-md-4">
+											{!! Form::label('title','Religion: '.$paciente->religion)!!}
+										</div>
 									
 									
 										

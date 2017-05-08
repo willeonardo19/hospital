@@ -77,6 +77,10 @@
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Teléfono de emergencia: '.$paciente->contacttel)!!}
 										</div>
+										<div class="form-group col-md-4">
+											{!! Form::label('title','Religion: '.$paciente->religion)!!}
+										</div>
+									
 										<hr>
 
 
