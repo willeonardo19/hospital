@@ -22,18 +22,16 @@
 								<div class="panel-heading"><strong>Información personal del paciente</strong></div>
 								<div class="panel-body">
 									
-										<div class="form-group col-md-4">
+										<div class="form-group col-md-3">
 											{!! Form::label('title','Código paciente: '.$paciente->cod_pac)!!}
 										</div>
-										<div class="form-group col-md-6">
-											{!! Form::label('title','DPI: '.$paciente->dpi)!!}
-										</div>
+										
 									
 									
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Nombre: '. $paciente->nombre.', '.$paciente->apellido)!!}
 										</div>
-										<div class="form-group col-md-4">
+										<div class="form-group col-md-3">
 											{!! Form::label('title','Teléfono: '.$paciente->telefono)!!}
 										</div>
 										<div class="form-group col-md-2">
@@ -41,10 +39,20 @@
 										</div>
 
 									
-										<div class="form-group col-md-4">
+										<div class="form-group col-md-3">
 											{!! Form::label('title','Fecha de Nacimiento: '.$fecha)!!}
 										</div>
+
 										<div class="form-group col-md-4">
+											{!! Form::label('title','Contacto de emergencia: '.$paciente->contacemer)!!}
+										</div>
+										<div class="form-group col-md-4">
+											{!! Form::label('title','Teléfono de emergencia: '.$paciente->contacttel)!!}
+										</div>
+
+
+
+										<div class="form-group col-md-3">
 											@if($paciente->sexo=='masculino')
 												{!! Form::label('title','Sexo: Masculino')!!}
 											@else 
@@ -67,12 +75,7 @@
 										</div>
 									
 									
-										<div class="form-group col-md-4">
-											{!! Form::label('title','Contacto de emergencia: '.$paciente->contacemer)!!}
-										</div>
-										<div class="form-group col-md-4">
-											{!! Form::label('title','Teléfono de emergencia: '.$paciente->contacttel)!!}
-										</div>
+										
 										
 									
 
@@ -81,7 +84,31 @@
 									<div class="panel-heading"><strong>Registrar Pre Consulta de {{$paciente->nombre.', '.$paciente->apellido}}</strong></div>
 										<div class="panel-body">
 											<table class="table">
-								    			{!! Form::open(['route'=>'preconsultas.store','method'=>'POST']) !!}	  
+								    			{!! Form::open(['route'=>'preconsultas.store','method'=>'POST']) !!}
+								    				<div class="form-group col-md-3 ">
+														{!! Form::label('title','Estado de Conciencia')!!}
+														{!! Form::text('est_conciencia',null,['class'=>'form-control','placeholder'=>'Estado de conciencia','required']) !!}
+													</div>	 
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Antecedentes Médicos')!!}
+														{!! Form::text('ant_medicos',null,['class'=>'form-control','placeholder'=>'Antecedentes  Médicos','required']) !!}
+													</div> 
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Antecedentes Quirúrgicos ')!!}
+														{!! Form::text('ant_quirurgicos',null,['class'=>'form-control','placeholder'=>'Antecedentes Quirúrgicos ','required']) !!}
+													</div> 
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Antecedentes Alérgicos')!!}
+														{!! Form::text('ant_alergicos',null,['class'=>'form-control','placeholder'=>'Antecedentes Alérgicos ','required']) !!}
+													</div> 
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Antecedentes Traumáticos')!!}
+														{!! Form::text('ant_traumaticos',null,['class'=>'form-control','placeholder'=>'Antecedentes  Traumáticos','required']) !!}
+													</div> 
+													<div class="form-group col-md-3 ">
+														{!! Form::label('title','Antecedentes Familiares')!!}
+														{!! Form::text('ant_familiares',null,['class'=>'form-control','placeholder'=>'Antecedentes  Familiares','required']) !!}
+													</div> 
 													<div class="form-group col-md-3 ">
 														{!! Form::label('title','Temperatura Oral')!!}
 														{!! Form::text('temp_oral',null,['class'=>'form-control','placeholder'=>'Temperatura Oral','required']) !!}
@@ -121,13 +148,13 @@
 													</div>
 													<div class="form-group col-md-3 ">
 														{!! Form::label('title','AU')!!}
-														{!! Form::text('au',null,['class'=>'form-control','placeholder'=>'AU','required']) !!}
+														{!! Form::text('au',null,['class'=>'form-control','placeholder'=>'AU']) !!}
 														
 
 													</div>
 													<div class="form-group col-md-3 ">
 														{!! Form::label('title','FCF')!!}
-														{!! Form::text('fcf',null,['class'=>'form-control','placeholder'=>'FCF','required']) !!}
+														{!! Form::text('fcf',null,['class'=>'form-control','placeholder'=>'FCF']) !!}
 														
 
 													</div>

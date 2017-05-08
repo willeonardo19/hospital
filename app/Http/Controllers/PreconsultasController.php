@@ -41,14 +41,19 @@ class PreconsultasController extends Controller
     {
 
         $this->validate($request,array(
+                'est_conciencia'       =>      'min:1|max:250|required',
+                'ant_medicos'          =>      'min:1|max:250|required',
+                'ant_quirurgicos'      =>      'min:1|max:250|required',
+                'ant_alergicos'        =>      'min:1|max:250|required',
+                'ant_traumaticos'      =>      'min:1|max:250|required',
+                'ant_familiares'       =>      'min:1|max:250|required',
                 'temp_oral'            =>      'min:1|max:250|required',
                 'pr_arterial'          =>      'min:1|max:250|required',
                 'fr_cardiaca'          =>      'min:1|max:250|required',
                 'fr_respiratoria'      =>      'min:1|max:250|required',
                 'peso'                 =>      'min:1|max:250|required',
-                'talla'                =>      'min:1|max:250|required',
-                'au'                   =>      'min:1|max:250|required',
-                'fcf'                  =>      'min:1|max:250|required'
+                'talla'                =>      'min:1|max:250|required'
+               
                 ));
           try { 
                 $preconsulta = new Preconsulta;
@@ -56,6 +61,12 @@ class PreconsultasController extends Controller
 
                 $preconsulta->paciente_id         = $request->input('paciente_id');
                 $preconsulta->usuario_id          =  Auth::user()->id;
+                $preconsulta->est_conciencia      = $request->input('est_conciencia');
+                $preconsulta->ant_medicos         = $request->input('ant_medicos');
+                $preconsulta->ant_quirurgicos     = $request->input('ant_quirurgicos');
+                $preconsulta->ant_alergicos       = $request->input('ant_alergicos');
+                $preconsulta->ant_traumaticos     = $request->input('ant_traumaticos');
+                $preconsulta->ant_familiares      = $request->input('ant_familiares');
                 $preconsulta->temp_oral           = $request->input('temp_oral');
                 $preconsulta->pr_arterial         = $request->input('pr_arterial');
                 $preconsulta->fr_cardiaca         = $request->input('fr_cardiaca');
