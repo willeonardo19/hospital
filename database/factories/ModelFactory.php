@@ -70,7 +70,7 @@ $factory->define(Paciente::class, function(Generator $faker){
 
 $factory->define(Consulta::class, function(Generator $faker){
 		$array	=	[
-			'paciente_id'			=>		$faker->numberBetween(1,100),
+			'paciente_id'			=>		$faker->numberBetween(1,50),
 			'preconsulta_id'		=>		null,
 			'diagnostico_med_id'	=>		null,
 			'estado'				=>		'solicitada'

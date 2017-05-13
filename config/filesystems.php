@@ -42,6 +42,10 @@ return [
     */
 
     'disks' => [
+        'pdf_exam' => [
+            'driver' => 'local',
+            'root' => public_path('pdf_exam'),
+        ],    
 
         'local' => [
             'driver' => 'local',

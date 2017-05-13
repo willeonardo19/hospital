@@ -61,6 +61,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	Route::resource('preconsultas','PreconsultasController');
 	Route::resource('diagnostico','DiagnosticosController');
 	Route::resource('laboratorio','LaboratoriosController');
+	Route::resource('examen','ExamenesController');
+	Route::get('examen/{id}/destroy',[
+			'uses'		=>	'ExamenesController@destroy',
+			'as'		=>	'examen.destroy'
+		]);
 
 });
 

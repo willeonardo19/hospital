@@ -35,7 +35,8 @@ class ConsultasController extends Controller
     public function historial_consultas()
     {
         //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
-        $consultas = Consulta::orderBy('created_at','ASC')->paginate(10);
+        //$consultas = Consulta::orderBy('created_at','ASC')->paginate(10);
+        $consultas= Consulta::orderBy('estado', 'ASC')->orderBy('id', 'ASC')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
             $consultas->usuario;
@@ -131,21 +132,30 @@ class ConsultasController extends Controller
      *///En esta funcion actualizara la connsulta al estado en proceso y actualizara el id del usuario, en la tabla consulta
     public function show($id)
     {
-        $consulta_id=$_GET['consulta_id'];
-        $paciente = Paciente::find($id);
-        $edad = Carbon::createFromDate(
-            date('Y',strtotime($paciente->fech_na)),
-            date('m',strtotime($paciente->fech_na)),
-            date('d',strtotime($paciente->fech_na)))->age;
+        if('consulta_id'==null){
+            $consulta_id=$_GET['consulta_id'];
 
-        $fecha = Carbon::createFromDate(
-            date('Y',strtotime($paciente->fech_na)),
-            date('m',strtotime($paciente->fech_na)),
-            date('d',strtotime($paciente->fech_na)))
-            ->format('d - m - Y');
+        }
+        else{
+            $consulta_id=$id;            
+        }
+            $paciente = Paciente::find($id);
+            $edad = Carbon::createFromDate(
+                date('Y',strtotime($paciente->fech_na)),
+                date('m',strtotime($paciente->fech_na)),
+                date('d',strtotime($paciente->fech_na)))->age;
+
+            $fecha = Carbon::createFromDate(
+                date('Y',strtotime($paciente->fech_na)),
+                date('m',strtotime($paciente->fech_na)),
+                date('d',strtotime($paciente->fech_na)))
+                ->format('d - m - Y');
+            
+           //dd($paciente2);
+           return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha)->with('consulta_id',$consulta_id);
         
-       //dd($paciente2);
-       return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha)->with('consulta_id',$consulta_id);
+
+
     }
     ///esta funcion retorna la informacion del paciente y  las preconsultas del paciente seleccionado
     public function registro_preconsulta($id)

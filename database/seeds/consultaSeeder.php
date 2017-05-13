@@ -11,7 +11,7 @@ class consultaSeeder extends Seeder
      */
     public function run()
     {
-   DB::table('consulta')->insert([
+   /*DB::table('consulta')->insert([
 	'paciente_id'			=> 	'1',
 	'preconsulta_id'		=>		null,
 	'diagnostico_med_id'	=>		null,
@@ -60,7 +60,7 @@ class consultaSeeder extends Seeder
 	'estado'			=> 	'proceso',
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::now() 
-	]);
+	]);*/
 	factory(hospital\Consulta::class,30)->create();
     }
 }

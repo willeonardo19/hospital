@@ -3,7 +3,15 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests;
+use hospital\Examen;
+use hospital\Paciente;
+use hospital\Laboratorio;
+use hospital\Http\Requests\LaboratorioRequest;
+use Laracasts\Flash\Flash;
+use DB;
+use Carbon\Carbon;
+use PDF;
 class LaboratoriosController extends Controller
 {
     /**
@@ -13,7 +21,14 @@ class LaboratoriosController extends Controller
      */
     public function index()
     {
-        return view('admin.laboratorio.index');
+        $laboratorios= Laboratorio::orderby('created_at','desc')->paginate(10);
+        $laboratorios->each(function($laboratorios){
+            $laboratorios->paciente;
+            $laboratorios->examen;
+            
+        });
+        return view('admin.laboratorio.index')
+        ->with('laboratorios',$laboratorios);
     }
 
     /**
@@ -23,7 +38,11 @@ class LaboratoriosController extends Controller
      */
     public function create()
     {
-        //
+        $examenes=Examen::select('examen','id')->pluck('examen','id');
+        $pacientes=Paciente::select(DB::raw("CONCAT(nombre,' ',apellido,' --- ',dpi,'  ---   ',fech_na) AS nombre"),'id')->pluck('nombre', 'id');
+        return view('admin.laboratorio.create')
+        ->with('examenes',$examenes)
+        ->with('pacientes',$pacientes);
     }
 
     /**
@@ -32,9 +51,35 @@ class LaboratoriosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LaboratorioRequest $request)
     {
-        //
+        try {
+            $paciente   =   Paciente::find($request->paciente_id);
+            $examen     =   Examen::find($request->examen_id);
+            $laboratorio = new Laboratorio;
+            DB::beginTransaction();
+            $file = $request->file('pdf_file');
+            $name = $paciente->nombre.'_'.$paciente->apellido.'_'.$examen->examen.'_'.time().'.'.$file->getClientOriginalExtension();
+            $laboratorio->paciente_id   = $request->input('paciente_id');
+            $laboratorio->examen_id     = $request->input('examen_id');
+            $laboratorio->resultado     = $name;
+            if($laboratorio->save()){
+                DB::commit();
+                
+                //$path = public_path().'/pdf_exam/';
+                $file->move('pdf_exam',$name);
+                Flash::success('Exámen cargado con éxito');
+            }
+
+        }catch (Exception $e) {
+            DB::rollback();
+            Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+       }
+       return redirect('admin/laboratorio');
+       
+        
+        
+       
     }
 
     /**

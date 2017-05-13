@@ -34,6 +34,9 @@ public function consulta()
     {
         return $this->hasOne('hospital\Consulta');
     }
-
+public function laboratorio()
+    {
+        return $this->hasMany('hospital\Laboratorio');
+    }
 
 }
