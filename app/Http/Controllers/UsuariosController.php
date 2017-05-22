@@ -117,8 +117,11 @@ class UsuariosController extends Controller
             'secretaria'        => "Secretaria",
             'member'            => "Usuario",
         ];
-         $personal = Personal::select(DB::raw("CONCAT(nombre,' ',apellido) AS nombre"),'id')->pluck('nombre', 'id');
-        return view('admin.usuarios.edit')->with('user',$user)->with('tipos',$tipos)->with('personal',$personal);
+        $personal = Personal::select(DB::raw("CONCAT(nombre,' ',apellido) AS nombre"),'id')->pluck('nombre', 'id');
+        return view('admin.usuarios.edit')
+        ->with('user',$user)
+        ->with('tipos',$tipos)
+        ->with('personal',$personal);
     }
 
     /**

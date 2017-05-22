@@ -7,19 +7,32 @@
 <body>
 	<table>
 		<tr>
-			<td><strong>nombre</strong></td>
-			<td><strong>apellido</strong></td>
-			<td><strong>telefono</strong></td>
-			<td><strong>direccion</strong></td>
+			<td><strong>Apellido</strong></td>
+			<td><strong>Nombre</strong></td>
+			<td><strong>Teléfono</strong></td>
+			<td><strong>Dirección</strong></td>
+			<td><strong>Fecha de Nacimiento</strong></td>
+			<td><strong>Género</strong></td>
+			<td><strong>DPI</strong></td>
+			<td><strong>Contacto de Emergencia</strong></td>
+			<td><strong>Teléfono de Emergencia</strong></td>
 		</tr>
-		@for($i=0;$i<10;$i++)
+		@foreach($personal as $persona)
+		
 		<tr>
-			<td>wilson</td>
-			<td>leonardo</td>
-			<td>123678</td>
-			<td>aqui</td>
+			<td>{{$persona->apellido}}</td>
+			<td>{{$persona->nombre}}</td>
+			<td>{{$persona->telefono}}</td>
+			<td>{{$persona->direccion}}</td>
+			<td>{{$persona->fechna}}</td>
+			<td>{{$persona->sexo}}</td>
+			<td>{{$persona->dpi}}</td>
+			<td>{{$persona->contacemer}}</td>
+			<td>{{$persona->contacttel}}</td>
+			
+			
 		</tr>
-		@endfor
+		@endforeach
 	</table>
 	
 </body>

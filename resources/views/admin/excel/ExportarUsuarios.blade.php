@@ -7,19 +7,33 @@
 <body>
 	<table>
 		<tr>
-			<td><strong>nombre</strong></td>
-			<td><strong>apellido</strong></td>
-			<td><strong>telefono</strong></td>
-			<td><strong>direccion</strong></td>
+			<td><strong>Usuario</strong></td>
+			<td><strong>Email</strong></td>
+			<td><strong>Rol</strong></td>
+			<td><strong>Asignado a</strong></td>
 		</tr>
-		@for($i=0;$i<10;$i++)
+		@foreach($usuarios as $user)
 		<tr>
-			<td>wilson</td>
-			<td>leonardo</td>
-			<td>123678</td>
-			<td>aqui</td>
+			<td>{{$user->user}}</td>
+			<td>{{$user->email}}</td>
+			@if($user->type=='admin')
+				<td>{{'Leosoftadmin'}}</td>
+			@elseif($user->type=='administracion')
+				<td>{{'Administración'}}</td>
+			@elseif($user->type=='doctor')
+				<td>{{'Doctor'}}</td>
+			@elseif($user->type=='enfermera')
+				<td>{{'Enfermera'}}</td>
+			@elseif($user->type=='laboratorio')
+				<td>{{'Laboratorio'}}</td>
+			@elseif($user->type=='secretaria')
+				<td>{{'Secretaria'}}</td>
+			@elseif($user->type=='member')
+				<td>{{'Equipo'}}</td>
+			@endif
+			<td>{{$user->personal->nombre.','.$user->personal->nombre}}</td>
 		</tr>
-		@endfor
+		@endforeach
 	</table>
 	
 </body>

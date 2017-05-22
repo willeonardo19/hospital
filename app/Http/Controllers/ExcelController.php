@@ -17,7 +17,8 @@ class ExcelController extends Controller
     {
     	Excel::create('Personal',function($excel){
     		$excel->sheet('Personal',function($sheet){
-    			$sheet->loadView('admin.excel.ExportarPersonal');
+                $personal= Personal::all();
+    			$sheet->loadView('admin.excel.ExportarPersonal')->with('personal',$personal);
     		});
     	})->export('xlsx');
     }
@@ -25,7 +26,8 @@ class ExcelController extends Controller
     {
     	Excel::create('Usuarios',function($excel){
     		$excel->sheet('Usuarios',function($sheet){
-    			$sheet->loadView('admin.excel.ExportarPersonal');
+                $usuarios = User::all();
+    			$sheet->loadView('admin.excel.ExportarUsuarios')->with('usuarios',$usuarios);
     		});
     	})->export('xlsx');
     }
@@ -33,7 +35,7 @@ class ExcelController extends Controller
     {
     	Excel::create('Pacientes',function($excel){
     		$excel->sheet('Pacientes',function($sheet){
-    			$sheet->loadView('admin.excel.ExportarPersonal');
+    			$sheet->loadView('admin.excel.ExportarPacientes');
     		});
     	})->export('xlsx');
     }

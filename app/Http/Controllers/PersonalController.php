@@ -3,6 +3,8 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use hospital\Http\Requests\PersonalRequest;
 use hospital\Personal;
 use Laracasts\Flash\Flash;
 use DB;
@@ -17,6 +19,8 @@ class PersonalController extends Controller
     {
         $personal = Personal::search($request->buscar)->orderBy('id','ASC')->paginate(10);
         return view('admin.personal.index')->with('personal',$personal);
+   
+        
     }
 
     /**
@@ -35,22 +39,10 @@ class PersonalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonalRequest $request)
     {
        
        
-       $this->validate($request,array(
-                'nombre'            =>      'min:3|max:250|required',
-                'apellido'          =>      'min:3|max:250|required',
-                'telefono'          =>      'max:12',
-                'direccion'         =>      'min:6|required',
-                'fechna'            =>      'before:tomorrow',
-                'sexo'              =>      'required',
-                'dpi'               =>      'max:30',
-                'contacemer'        =>      'min:6|max:250|required',
-                'contacttel'        =>      'max:12'//dimensions:min_width=45,min_height=45'
-                
-                ));
           try { 
                 $persona = new Personal;
                 DB::beginTransaction();
@@ -63,7 +55,7 @@ class PersonalController extends Controller
                 $persona->fechna            = $request->input('fechna');
                 $persona->sexo              = $request->input('sexo');
                 $persona->contacemer        = $request->input('contacemer');
-                $persona->contacttel        = $request->input('contactel');
+                $persona->contacttel        = $request->input('contacttel');
                 
                 
                 if($persona->save()){
@@ -107,21 +99,10 @@ class PersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PersonalRequest $request, $id)
     {
         
-        $this->validate($request,array(
-            'nombre'            =>      'min:3|max:250|required',
-            'apellido'          =>      'min:3|max:250|required',
-            'telefono'          =>      'max:12',
-            'direccion'         =>      'min:6|required',
-            'fechna'            =>      'before:tomorrow',
-            'sexo'              =>      'required',
-            'dpi'               =>      'max:30',
-            'contacemer'        =>      'min:6|max:250|required',
-            'contacttel'        =>      'max:12'//dimensions:min_width=45,min_height=45'
-            
-            ));
+       
         
         try {
             $persona = Personal::find($id);
@@ -134,7 +115,7 @@ class PersonalController extends Controller
             $persona->fechna            = $request->input('fechna');
             $persona->sexo              = $request->input('sexo');
             $persona->contacemer        = $request->input('contacemer');
-            $persona->contacttel        = $request->input('contactel');
+            $persona->contacttel        = $request->input('contacttel');
 
             if($persona->save() ) {
                 DB::commit();
