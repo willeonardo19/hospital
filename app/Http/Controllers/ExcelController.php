@@ -35,7 +35,8 @@ class ExcelController extends Controller
     {
     	Excel::create('Pacientes',function($excel){
     		$excel->sheet('Pacientes',function($sheet){
-    			$sheet->loadView('admin.excel.ExportarPacientes');
+                 $pacientes = Paciente::all();
+    			$sheet->loadView('admin.excel.ExportarPacientes')->with('pacientes',$pacientes);
     		});
     	})->export('xlsx');
     }

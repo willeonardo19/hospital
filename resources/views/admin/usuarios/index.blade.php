@@ -27,11 +27,7 @@
 									</div>
 								{!! Form::close() !!}
 								<hr>
-									<form action="ImportarUsuarios" method="POST" enctype="multipart/form-data">
-										{!!Form::file('file');!!}
-										<input type="hidden" value="{{csrf_token()}}" name="_token">
-										<button class="btn btn-warning" type="submit">Cargar Archivo</button>
-									</form>
+									
 							</div>
 							<div class="container">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

@@ -27,7 +27,7 @@ class Paciente extends Model
     ];
 public function scopeSearch($query,$buscar)
     {
-        return $query->where('apellido','LIKE',"%$buscar%")->orwhere('nombre','LIKE',"%$buscar%");
+        return $query->where('apellido','LIKE',"%$buscar%")->orwhere('nombre','LIKE',"%$buscar%")->orwhere('telefono','LIKE',"%$buscar%")->orwhere('cod_pac','LIKE',"%$buscar%");
     }
 
 public function consulta()

@@ -3,6 +3,8 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use hospital\Http\Requests\UsuarioRequest;
 use hospital\User;
 use hospital\Personal;
 use Laracasts\Flash\Flash;
@@ -53,20 +55,8 @@ class UsuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        
-       
-       $this->validate($request,array(
-                'user'              =>      'min:3|max:250|required|unique:users',
-                'email'             =>      'min:3|max:250|email|required|unique:users',
-                'password'          =>      'min:6|max:20|required',
-                'rol'               =>      'required',
-                'idpersonal'        =>      'required'
-                //dimensions:min_width=45,min_height=45'
-                
-                ));
-
        try {
             $usuario = new User;
             DB::beginTransaction();
@@ -131,16 +121,8 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsuarioRequest $request, $id)
     {
-        $this->validate($request,array(
-                'user'              =>      'min:3|max:250|required',
-                'email'             =>      'min:3|max:250|email|required',
-                'password'          =>      'min:6|max:20|required',
-                'rol'               =>      'required',
-                'idpersonal'        =>      'required'
-        ));
-        
         try {
             $user = User::find($id);
             DB::beginTransaction();

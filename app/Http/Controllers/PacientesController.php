@@ -3,6 +3,8 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use hospital\Http\Requests\PacienteRequest;
 use hospital\Paciente;
 use Laracasts\Flash\Flash;
 use DB;
@@ -36,26 +38,8 @@ class PacientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PacienteRequest $request)
     {
-        //dd($request);
-       
-       
-       $this->validate($request,array(
-                'cod_paciente'      =>      'max:250|required',
-                'dpi'               =>      'max:250',
-                'nombre'            =>      'min:3|max:250|required',
-                'apellido'          =>      'min:3|max:250|required',
-                'telefono'          =>      'max:12',
-                'fechna'            =>      'before:tomorrow',
-                'sexo'              =>      'required',
-                'est_civ'           =>      'required',
-                'religion'          =>      'required',
-                'ocupacion'         =>      'min:6|max:200|required',
-                'direccion'         =>      'min:6|max:200|required',
-                'contacemer'        =>      'min:6|max:250|required',
-                'contacttel'        =>      'max:12'
-                ));
        try { 
             $paciente = new Paciente;
             DB::beginTransaction();
@@ -128,24 +112,9 @@ class PacientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PacienteRequest $request, $id)
     {
-        //dd($request);
-         $this->validate($request,array(
-                'cod_paciente'      =>      'max:250|required',
-                'dpi'               =>      'max:250',
-                'nombre'            =>      'min:3|max:250|required',
-                'apellido'          =>      'min:3|max:250|required',
-                'telefono'          =>      'max:12',
-                'fechna'            =>      'before:tomorrow',
-                'sexo'              =>      'required',
-                'est_civ'           =>      'required',
-                'religion'          =>      'required',
-                'ocupacion'         =>      'min:6|max:200|required',
-                'direccion'         =>      'min:6|max:200|required',
-                'contacemer'        =>      'min:6|max:250|required',
-                'contacttel'        =>      'max:12'
-                ));
+    
          
          try {
             $paciente = Paciente::find($id);
