@@ -62,7 +62,7 @@
 													@if(Auth::user()->type =='admin' || Auth::user()->type =='doctor' )
 														<a href="{{ route('consultas.show',$consulta->paciente_id) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
 													@else
-														<a href="{{ route('consultas.edit',$consulta->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
+														<!--a href="{{ route('consultas.edit',$consulta->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a-->
 														<a href="{{ route('consultas.destroy',$consulta->id) }}" onClick="return confirm('¿Desea eliminar esta consulta?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
 													@endif
 												</td>
@@ -87,8 +87,8 @@
 <script src="{{asset('assets/bootstrap/js/dropdown.js')}}"></script>
 	<script>
 		$('.select-paciente').chosen({
-			placeholder_text_single:'Seleccione rol',
-			no_results_text: 'No se encontro resultados para el rol '
+			placeholder_text_single:'Seleccione Paciente',
+			no_results_text: 'No se encontro resultados para '
 		});
 
 	</script>

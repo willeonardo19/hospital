@@ -5,6 +5,8 @@ namespace hospital\Http\Controllers;
 use Illuminate\Http\Request;
 use hospital\Consulta;
 use hospital\Paciente;
+use hospital\Preconsulta;
+use hospital\Diagnostico;
 use hospital\User;
 use Laracasts\Flash\Flash;
 use DB;
@@ -36,10 +38,10 @@ class ConsultasController extends Controller
     {
         //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
         //$consultas = Consulta::orderBy('created_at','ASC')->paginate(10);
-        $consultas= Consulta::orderBy('estado', 'ASC')->orderBy('id', 'ASC')->paginate(10);
+        $consultas= Consulta::orderBy('estado', 'ASC')->orderBy('id', 'ASC')->where('estado','=' ,'finalizada')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
-            $consultas->usuario;
+            $consultas->diagnostico;
         });
 
        //dd($consultas);
@@ -132,13 +134,20 @@ class ConsultasController extends Controller
      *///En esta funcion actualizara la connsulta al estado en proceso y actualizara el id del usuario, en la tabla consulta
     public function show($id)
     {
-        if('consulta_id'==null){
+        if(isset($_GET['consulta_id'])){
             $consulta_id=$_GET['consulta_id'];
 
         }
         else{
             $consulta_id=$id;            
         }
+            $consultasdelpaciente= Consulta::orderBy('created_at', 'ASC')->where('estado','LIKE' ,'finalizada')->where('paciente_id','=' ,$id)->paginate(10);
+            $consultasdelpaciente->each(function($consultasdelpaciente){
+            $consultasdelpaciente->preconsulta;
+            $consultasdelpaciente->diagnostico;
+        });
+
+            //dd($consultasdelpaciente);
             $paciente = Paciente::find($id);
             $edad = Carbon::createFromDate(
                 date('Y',strtotime($paciente->fech_na)),
@@ -152,11 +161,27 @@ class ConsultasController extends Controller
                 ->format('d - m - Y');
             
            //dd($paciente2);
-           return view('admin.consulta.consulta')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha)->with('consulta_id',$consulta_id);
+           return view('admin.consulta.consulta')
+           ->with('paciente',$paciente)
+           ->with('consultasdelpaciente',$consultasdelpaciente)
+           ->with('edad',$edad)
+           ->with('fecha',$fecha)
+           ->with('consulta_id',$consulta_id);
         
 
 
     }
+    ///////////////mostar la preconsulta y disgnostico que visualizara el medico del paciente
+    public function showhistorial()
+    {
+        //dd($_GET['idcon']);
+        $preconsulta= Preconsulta::find($_GET['idcon']);
+        $diagnostico = Diagnostico::find($_GET['idcon']);
+        return view('admin.consulta.mostrarprecdiag')
+        ->with('preconsulta',$preconsulta)
+        ->with('diagnostico',$diagnostico);
+    }
+
     ///esta funcion retorna la informacion del paciente y  las preconsultas del paciente seleccionado
     public function registro_preconsulta($id)
     {

@@ -45,11 +45,20 @@ class User extends Authenticatable
         return $this->belongsTo('hospital\Personal');
     }
     //
-    public function consulta()
+    /*public function consulta()
     {
-        return $this->hasOne('hospital\Consulta');
+        return $this->hasMany('hospital\Consulta');
+    }*/
+    public function preconsulta()
+    {
+        return $this->hasMany('hospital\Preconsulta');
     }
 
-
+    public function diagnostico()
+    {
+        return $this->hasMany('hospital\Disgnostico');
+    }
   
+
+
 }

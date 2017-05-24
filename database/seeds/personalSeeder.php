@@ -108,6 +108,6 @@ class personalSeeder extends Seeder
             'created_at'        => date("Y-m-d H:i:s") 
             ]);*/
 
-            factory(hospital\Personal::class,20)->create();
+            factory(hospital\Personal::class,19)->create();
     }
 }

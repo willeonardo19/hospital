@@ -53,16 +53,16 @@
 	<script>
 		$('.select-paciente').chosen({
 			placeholder_text_single:'Seleccione rol',
-			no_results_text: 'No se encontro resultados para el rol '
+			no_results_text: 'No se encontro resultados para  '
 		});
 
 		$('.select-personal').chosen({
 			placeholder_text_single:'Seleccione pesonal para asignar usuario',
-			no_results_text: 'No se encontro resultados para '
+			no_results_text: 'No se encontro resultados para  '
 		});
 		$('.select-estado').chosen({
 			placeholder_text_single:'Seleccione pesonal para asignar usuario',
-			no_results_text: 'No se encontro resultados para '
+			no_results_text: 'No se encontro resultados para  '
 		});
 		
 

@@ -34,10 +34,10 @@
 											<tr>
 												<td class="hidden-xs">{{ $consulta->id }}</td>
 												<td>{{ $consulta->paciente->nombre.', '.$consulta->paciente->apellido }}</td>
-												@if($consulta->usuario==null)
+												@if($consulta->diagnostico==null)
 													<td>Sin dato</td>
 												@else
-													<td>{{ $consulta->usuario->personal->nombre.' '.$consulta->usuario->personal->apellido }}</td>
+													<td>{{ $consulta->diagnostico->users->personal->nombre.', '.$consulta->diagnostico->users->personal->apellido}}</td>
 												@endif
 												@if($consulta->estado=='solicitada')
 													<td><span class="label label-primary">{{'Solicitada' }}</span></td>
@@ -47,7 +47,7 @@
 													<td><span class="label label-danger ">{{'Finalizada' }}</span></td>
 												@endif
 												<td>
-													<a href="{{ route('consultas.show',$consulta->paciente->id) }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
+													<a href="{{ url('admin/showhistorial').'?idcon='.$consulta->id }}" class="btn btn-success glyphicon glyphicon-eye-open"></a>
 													
 												</td>
 											</tr>

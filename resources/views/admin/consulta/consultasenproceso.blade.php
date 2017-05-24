@@ -1,4 +1,5 @@
-<!-- Listado de consultas que se encuentran en solicitado-->
+<!-- Listado de consulta en estado de proceso, que ya cuentan con una preconsulta
+esta son las que visualizara el medico. es el index del medico-->
 @extends('layouts.app')
 
 @section('htmlheader_title')

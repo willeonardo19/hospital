@@ -62,6 +62,6 @@ class pacienteSeeder extends Seeder
             'created_at'        => date("Y-m-d H:i:s") 
             ]);
     */
-         factory(hospital\Paciente::class,50)->create();
+         factory(hospital\Paciente::class,9)->create();
     }
 }

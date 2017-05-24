@@ -45,6 +45,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 			'as'		=>	'pacientes.destroy'
 		]);
 	Route::resource('consultas','ConsultasController');
+	Route::any('showhistorial','ConsultasController@showhistorial');
+
 	Route::any('historial','ConsultasController@historial_consultas');
 	Route::any('preconsulta','ConsultasController@pre_consulta');//muestra el listado de consultas para la enfermera
 	Route::get('consultas/{id}/registropreconsulta',[

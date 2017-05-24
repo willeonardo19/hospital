@@ -61,6 +61,6 @@ class consultaSeeder extends Seeder
 	//'antecedentes'		=>	'Ninguno',
 	'created_at' 		=> Carbon::now() 
 	]);*/
-	factory(hospital\Consulta::class,30)->create();
+	//factory(hospital\Consulta::class,10)->create();
     }
 }

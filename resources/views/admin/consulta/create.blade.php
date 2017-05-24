@@ -49,7 +49,7 @@
 	<script>
 		$('.select-paciente').chosen({
 			placeholder_text_single:'Seleccione rol',
-			no_results_text: 'No se encontro resultados para el rol '
+			no_results_text: 'No se encontro resultados para  '
 		});
 
 		$('.select-personal').chosen({

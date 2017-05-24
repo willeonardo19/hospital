@@ -17,4 +17,14 @@ class Diagnostico extends Model
   		'imp_clinica',
   		'tratamiento'
     ];
+
+ public function consulta()
+    {
+        return $this->hasMany('hospital\Consulta');
+    }
+public function users()
+    {
+        return $this->belongsTo('hospital\User','usuario_id');
+    }
+
 }

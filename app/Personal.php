@@ -15,6 +15,7 @@ class Personal extends Model
     	'telefono',
     	'direccion',
         'fechna',
+        'sexo',
     	'dpi',
         'contacemer',
         'contacttel'

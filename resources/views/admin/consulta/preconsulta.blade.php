@@ -166,7 +166,7 @@
 
 													<div class="col-md-12">
 														<div class="form-group">
-
+															<a href="{{ url('admin/preconsulta') }}" class="btn btn-warning">Atrás</a>
 															{!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
 														</div>
 													</div>

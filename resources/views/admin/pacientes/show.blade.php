@@ -103,21 +103,8 @@
 							</div>
 							<div class="col-md-12 ">
 								<hr>
+								<a href="{{ url('admin/pacientes') }}" class="btn btn-warning">Atrás</a>	
 
-
-								
-								
-
-								
-								
-								
-								
-								
-								
-								
-								
-						
-								
 							</div>
 						</div>
 					</div>

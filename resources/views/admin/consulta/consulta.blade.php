@@ -1,3 +1,5 @@
+<!--esta es la vista donde se visualizara la info del paciente
+y el historial de consulta que ha tenido -->
 @extends('layouts.app')
 
 @section('htmlheader_title')
@@ -87,17 +89,26 @@
 								</div>
 							<div class="panel-heading"><strong>Historial clinico</strong></div>
 								<div class="panel-body">
-								<div><a href="{{url('admin/diagnostico/create').'?paciente='.$paciente->id.'&consulta='.$consulta_id}}" class="btn btn-success">Nuevo Diagnóstico</a></div>
+								<div>
+								<a href="{{ url('admin/consulta') }}" class="btn btn-warning">Atrás</a> <a href="{{url('admin/diagnostico/create').'?paciente='.$paciente->id.'&consulta='.$consulta_id}}" class="btn btn-success">Nuevo Diagnóstico</a></div>
 								<table class="table">
 								    <thead>
 								      <tr>
-								        <th>Diagnóstico</th>
+								        
 								        <th>Fecha</th>
-								        <th>Detalles</th>
+								        <th>Médico</th>
+								        <th>Opciones</th>
 								      </tr>
 								    </thead>
 								    <tbody>
-								      
+								      @foreach($consultasdelpaciente as $consultadelpaciente)
+										<tr>
+											<td>{{$consultadelpaciente->created_at->format('d/M/Y')}}</td>
+											<td>{{$consultadelpaciente->diagnostico->users->personal->nombre.', '.$consultadelpaciente->diagnostico->users->personal->apellido}}</td>
+											<td><a href="{{ url('admin/showhistorial').'?idcon='.$consultadelpaciente->id }}" target="_blank" class="btn btn-success glyphicon glyphicon glyphicon-log-out"></a></td>
+										</tr>
+
+								      @endforeach
 								    </tbody>
 								  </table>
 								</div>

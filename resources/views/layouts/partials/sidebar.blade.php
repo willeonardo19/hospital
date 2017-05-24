@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <!-- search form (Optional) -->
+        <!-- search form (Optional)->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
@@ -27,7 +27,7 @@
               </span>
             </div>
         </form>
-        <!-- /.search form -->
+        <! /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
@@ -48,7 +48,7 @@
                 <li class="treeview">
                     <a href="#"><i class='fa fa-male'></i> <span> Consulta </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
+                        <!--li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li-->
                         <li><a href="{{ url('admin/consulta') }}">Consultas Pendientes</a></li>
                         <li><a href="{{url('admin/historial')}}">Historial de  Consulta</a></li>
                     </ul>
