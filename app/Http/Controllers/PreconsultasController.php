@@ -3,6 +3,8 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use hospital\Http\Requests\PrecoRequest;
 use hospital\Preconsulta;
 use hospital\Consulta;
 use Laracasts\Flash\Flash;
@@ -37,24 +39,10 @@ class PreconsultasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PrecoRequest $request)
     {
 
-        $this->validate($request,array(
-                'est_conciencia'       =>      'min:1|max:250|required',
-                'ant_medicos'          =>      'min:1|max:250|required',
-                'ant_quirurgicos'      =>      'min:1|max:250|required',
-                'ant_alergicos'        =>      'min:1|max:250|required',
-                'ant_traumaticos'      =>      'min:1|max:250|required',
-                'ant_familiares'       =>      'min:1|max:250|required',
-                'temp_oral'            =>      'min:1|max:250|required',
-                'pr_arterial'          =>      'min:1|max:250|required',
-                'fr_cardiaca'          =>      'min:1|max:250|required',
-                'fr_respiratoria'      =>      'min:1|max:250|required',
-                'peso'                 =>      'min:1|max:250|required',
-                'talla'                =>      'min:1|max:250|required'
-               
-                ));
+
           try { 
                 $preconsulta = new Preconsulta;
                 DB::beginTransaction();

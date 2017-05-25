@@ -26,6 +26,7 @@
 											<th class="hidden-xs">#</th>
 											<th>Paciente</th>
 											<th>Medico</th>
+											<th>Fecha</th>
 											<th>Estado</th>
 											<th>Opciones</th>
 										</thead>
@@ -39,6 +40,7 @@
 												@else
 													<td>{{ $consulta->diagnostico->users->personal->nombre.', '.$consulta->diagnostico->users->personal->apellido}}</td>
 												@endif
+												<td class="hidden-xs">{{ $consulta->created_at->format('d/M/Y') }}</td>
 												@if($consulta->estado=='solicitada')
 													<td><span class="label label-primary">{{'Solicitada' }}</span></td>
 												@elseif($consulta->estado=='proceso')

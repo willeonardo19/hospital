@@ -67,7 +67,9 @@
 										</tbody>
 								  	</table>
 								</div>
-								
+								<div class="text-center">
+  									{!! $laboratorios->render() !!}
+								</div>
 							</div>
 					</div>
 				</div>

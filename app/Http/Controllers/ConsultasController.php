@@ -38,7 +38,7 @@ class ConsultasController extends Controller
     {
         //$consultas = Consulta::orderBy('estado','ASC')->paginate(10);
         //$consultas = Consulta::orderBy('created_at','ASC')->paginate(10);
-        $consultas= Consulta::orderBy('estado', 'ASC')->orderBy('id', 'ASC')->where('estado','=' ,'finalizada')->paginate(10);
+        $consultas= Consulta::orderBy('estado', 'ASC')->orderBy('created_at', 'ASC')->where('estado','=' ,'finalizada')->paginate(10);
         $consultas->each(function($consultas){
             $consultas->paciente;
             $consultas->diagnostico;

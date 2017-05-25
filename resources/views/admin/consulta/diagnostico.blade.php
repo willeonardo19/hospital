@@ -128,7 +128,7 @@
 
 										<div class="col-md-12">
 											<div class="form-group">
-												<a href="#" class="btn btn-warning">Cancelar</a>	
+												<a href="{{ url('admin/consulta') }}" class="btn btn-warning">Cancelar</a>	
 											
 												{!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
 											</div>

@@ -3,6 +3,8 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use hospital\Http\Requests\DiagRequest;
 use hospital\Diagnostico;
 use hospital\Consulta;
 use Laracasts\Flash\Flash;
@@ -41,7 +43,7 @@ class DiagnosticosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiagRequest $request)
     {
         //dd($request);
        $this->validate($request,array(

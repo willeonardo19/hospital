@@ -3,6 +3,8 @@
 namespace hospital\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use hospital\Http\Requests\ExcelRequest;
 use Excel;
 use Illuminate\Support\Facades\Input;
 use hospital\Personal;
@@ -41,8 +43,8 @@ class ExcelController extends Controller
     	})->export('xlsx');
     }
     //Importar Excel
-    public function ImportarPersonal()
-    {	
+    public function ImportarPersonal(ExcelRequest $request)
+    {	    
     	if(Input::file('file')!=null){
             try {
         		Excel::load(Input::file('file'),function($reader){
@@ -61,7 +63,7 @@ class ExcelController extends Controller
         }
     	return redirect('admin/personal');
     }
-    public function ImportarUsuarios()
+    public function ImportarUsuarios(ExcelRequest $request)
     {   
         if(Input::file('file')!=null){
             try {
@@ -82,7 +84,7 @@ class ExcelController extends Controller
         
         return redirect('admin/usuarios');
     }
-    public function ImportarPacientes()
+    public function ImportarPacientes(ExcelRequest $request)
     {   
         if(Input::file('file')!=null){
             try {

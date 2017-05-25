@@ -112,6 +112,9 @@ y el historial de consulta que ha tenido -->
 								    </tbody>
 								  </table>
 								</div>
+								<div class="text-center">
+  									{!! $consultasdelpaciente->render() !!}
+								</div>
 							</div>
 							
 						</div>
