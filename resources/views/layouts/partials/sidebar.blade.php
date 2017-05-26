@@ -62,6 +62,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
                         <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
+                        <li><a href="{{url('admin/historial')}}">Constancia Médica</a></li>
                         
                     </ul>
                 </li>

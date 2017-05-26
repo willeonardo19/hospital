@@ -24,7 +24,7 @@ class ExcelRequest extends FormRequest
     public function rules()
     {
         return [
-             'file'     =>      'required|mimes:xls,xlsx|max:10240',
+             'file'     =>      'required|mimes:xls,xlsx,ots,ods|max:10240',
 
         ];
     }

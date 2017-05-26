@@ -17,20 +17,19 @@
 
 					<div class="panel-body">
 						<div class="container-fluid">
-							<h1>Registro Médico</h1>
-							<hr>
+							
 							<div class="panel panel-primary">
 								<div class="panel-heading"><h4><strong>Información personal del paciente</strong></h4></div>
 								<div class="panel-body">
-									<p>
+									<div>
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Código paciente: '.$paciente->cod_pac)!!}
 										</div>
 										<div class="form-group col-md-6">
 											{!! Form::label('title','DPI: '.$paciente->dpi)!!}
 										</div>
-									</p>
-									<p>
+									</div>
+									<div>
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Nombre: '. $paciente->nombre.', '.$paciente->apellido)!!}
 										</div>
@@ -41,8 +40,8 @@
 											{!! Form::label('title','Edad: '.$edad)!!}
 										</div>
 
-									</p>
-									<p>
+									</div>
+									<div>
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Fecha de Nacimiento: '.$fecha)!!}
 										</div>
@@ -67,8 +66,8 @@
 
 											@endif
 										</div>
-									</p>
-									<p>
+									</div>
+									<div>
 										<div class="form-group col-md-4">
 											@if($paciente->religion == 'catolica')
 												{!! Form::label('title','Religión: Católico(a)')!!}
@@ -87,8 +86,8 @@
 											{!! Form::label('title','Dirección: '.$paciente->direccion)!!}
 										</div>
 										
-									</p>
-									<p>
+									</div>
+									<div>
 										
 										<div class="form-group col-md-4">
 											{!! Form::label('title','Contacto de emergencia: '.$paciente->contacemer)!!}
@@ -97,10 +96,38 @@
 											{!! Form::label('title','Teléfono de emercengia: '.$paciente->contacttel)!!}
 										</div>
 										
-									</p>
+									</div>
 
 								</div>
-							</div>
+							
+
+							<table class="table table-hover">
+								<thead>
+									<th class="hidden-xs hidden-md">#</th>
+									<th>Fecha</th>
+									<th>Médico</th>
+									<th>Opciones</th>
+								</thead>
+								<tbody>
+								@foreach($consultas as $consulta)
+									<tr>
+										<td class="hidden-xs hidden-md">{{ $consulta->id }}</td>
+										<td>{{ $consulta->created_at->format('d-M-Y')}}</td>
+										<td>{{ $consulta->diagnostico->users->personal->nombre.',' .$consulta->diagnostico->users->personal->apellido}}</td>
+										
+										
+										<td>
+											<a href="{{ url('admin/constancia_med').'?idc='.$consulta->id}}" class="btn btn-success glyphicon glyphicon-log-in"></a>
+											
+										</td>
+									</tr>
+								@endforeach
+								</tbody>
+						  	</table>
+						</div>
+							<div class="text-center">
+  									{!! $consultas->render() !!}
+								</div>
 							<div class="col-md-12 ">
 								<hr>
 								<a href="{{ url('admin/pacientes') }}" class="btn btn-warning">Atrás</a>	

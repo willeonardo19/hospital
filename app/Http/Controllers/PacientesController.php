@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use hospital\Http\Requests\PacienteRequest;
 use hospital\Paciente;
+use hospital\Consulta;
 use Laracasts\Flash\Flash;
 use DB;
 use Carbon\Carbon;
+use PDF;
 class PacientesController extends Controller
 {
     /**
@@ -75,9 +77,16 @@ class PacientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //
     public function show($id)
     {
         $paciente = Paciente::find($id);
+        $consultas = Consulta::orderby('created_at','Desc')->where('paciente_id','=',$id)->where('estado','=','finalizada')->paginate(5);
+        $consultas->each(function($consultas){
+            
+            $consultas->diagnostico;
+        });
+
         $edad = Carbon::createFromDate(
             date('Y',strtotime($paciente->fech_na)),
             date('m',strtotime($paciente->fech_na)),
@@ -90,9 +99,23 @@ class PacientesController extends Controller
             ->format('d - m - Y');
         
        //dd($fecha);
-       return view('admin.pacientes.show')->with('paciente',$paciente)->with('edad',$edad)->with('fecha',$fecha);
+       return view('admin.pacientes.show')
+       ->with('paciente',$paciente)
+       ->with('consultas',$consultas)
+       ->with('edad',$edad)
+       ->with('fecha',$fecha);
     }
 
+    public function constancia_med(){
+        $consulta = Consulta::find($_GET['idc']);
+        $consulta->each(function($consulta){
+            $consulta->paciente;
+            $consulta->preconsulta;
+            $consulta->diagnostico;
+        });
+        $pdf = PDF::loadView('admin.pdfs.constancia',compact('consulta'));
+        return $pdf->download('const_med'.$consulta->paciente->nombre.'_'.$consulta->paciente->apellido.'.pdf');
+    }
     /**
      * Show the form for editing the specified resource.
      *

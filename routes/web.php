@@ -68,8 +68,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 			'uses'		=>	'ExamenesController@destroy',
 			'as'		=>	'examen.destroy'
 		]);
+	Route::any('constancia_med','PacientesController@constancia_med');
 
 });
+
+
+
 
 //////////////////////////////////////////////////
 Route::get('logout','Auth\LoginController@logout');
