@@ -13,10 +13,10 @@
 		<div class="row">
 			<div class="col-md-12 ">
 				<div class="panel panel-primary">
-					<div class="panel-heading">Dashboard</div>
+					<div class="panel-heading">Bienvenido</div>
 
-					<div class="panel-body">
-						Proyecto by Leosoft
+					<div class="panel-body" align="center">
+						<img src="img/inicio.jpg">
 					</div>
 				</div>
 			</div>

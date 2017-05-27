@@ -104,7 +104,7 @@
                 <li class="treeview">
                     <a href="#"><i class='fa fa-file'></i> <span> Administración </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="#">{{ 'Sigsa'}}</a></li>
+                        <li><a href="{{route('reportes.index') }}">{{ 'Sigsa'}}</a></li>
                         
                     </ul>
                 </li>

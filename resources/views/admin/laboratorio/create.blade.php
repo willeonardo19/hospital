@@ -57,11 +57,11 @@
 	<script>
 		$('.select-paciente').chosen({
 			placeholder_text_single:'Seleccione Paciente',
-			no_results_text: 'No se encontro resultados para el paciente '
+			no_results_text: 'No se encontro resultados para  '
 		});
 		$('.select-examen').chosen({
 			placeholder_text_single:'Seleccione Exámen',
-			no_results_text: 'No se encontro resultados para exámen '
+			no_results_text: 'No se encontro resultados para '
 		});
 
 	</script>

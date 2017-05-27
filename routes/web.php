@@ -72,6 +72,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 			'uses'		=>	'ExamenesController@destroy',
 			'as'		=>	'examen.destroy'
 		]);
+	Route::resource('reportes','ReportesController');
 	Route::any('constancia_med','PacientesController@constancia_med');
 
 });
