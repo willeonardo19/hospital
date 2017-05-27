@@ -86,7 +86,7 @@
 							
 									<div class="panel-heading"><strong>Registrar Pre Consulta de {{$paciente->nombre.', '.$paciente->apellido}}</strong></div>
 										<div class="panel-body">
-											<table class="table">
+											<table class="table table-responsive">
 								    			{!! Form::open(['route'=>'preconsultas.store','method'=>'POST']) !!}
 								    				<div class="form-group col-md-3 ">
 														{!! Form::label('title','Estado de Conciencia')!!}

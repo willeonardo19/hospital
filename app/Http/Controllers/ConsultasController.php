@@ -150,7 +150,7 @@ class ConsultasController extends Controller
 
             //dd($consultasdelpaciente);
             $paciente = Paciente::find($id);
-            $laboratorios = Laboratorio::orderBy('created_at', 'ASC')->paginate(10);
+            $laboratorios = Laboratorio::orderBy('created_at', 'ASC')->where('paciente_id','=' ,$id)->paginate(10);
             $edad = Carbon::createFromDate(
                 date('Y',strtotime($paciente->fech_na)),
                 date('m',strtotime($paciente->fech_na)),
@@ -181,8 +181,9 @@ class ConsultasController extends Controller
     public function showhistorial()
     {
         //dd($_GET['idcon']);
-        $preconsulta= Preconsulta::find($_GET['idcon']);
-        $diagnostico = Diagnostico::find($_GET['idcon']);
+        $consulta=Consulta::find($_GET['idcon']);
+        $preconsulta= Preconsulta::find($consulta->preconsulta_id);
+        $diagnostico = Diagnostico::find($consulta->diagnostico_med_id);
         return view('admin.consulta.mostrarprecdiag')
         ->with('preconsulta',$preconsulta)
         ->with('diagnostico',$diagnostico);

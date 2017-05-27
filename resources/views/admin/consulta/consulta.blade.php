@@ -91,7 +91,7 @@ y el historial de consulta que ha tenido -->
 								<div class="panel-body">
 								<div>
 								<a href="{{ url('admin/consulta') }}" class="btn btn-warning">Atrás</a> <a href="{{url('admin/diagnostico/create').'?paciente='.$paciente->id.'&consulta='.$consulta_id}}" class="btn btn-success">Nuevo Diagnóstico</a></div>
-								<table class="table">
+								<table class="table table-responsive">
 								    <thead>
 								      <tr>
 								        
@@ -115,7 +115,7 @@ y el historial de consulta que ha tenido -->
 								<div class="panel-heading"><strong>Exámenes de Laboratorio</strong></div>
 								<div class="panel-body">
 								
-								<table class="table">
+								<table class="table table-responsive">
 								    <thead>
 								      <tr>
 								        

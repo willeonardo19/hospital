@@ -54,7 +54,7 @@ $i=1 ?>
 
                 <hr>
                 @if(isset($examenes))
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive">
                         <thead>
                             <th>#</th>
                             <th>Exámen</th>

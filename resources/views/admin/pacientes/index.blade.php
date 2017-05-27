@@ -36,7 +36,7 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-10 col-lg-12">
 									<hr>
-									<table class="table table-hover">
+									<table class="table table-hover table-responsive">
 										<thead>
 											<th class="hidden-xs hidden-md">#</th>
 											<th>Nombre</th>

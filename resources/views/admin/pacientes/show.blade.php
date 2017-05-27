@@ -101,7 +101,7 @@
 								</div>
 							
 
-							<table class="table table-hover">
+							<table class="table table-hover table-responsive">
 								<thead>
 									<th class="hidden-xs hidden-md">#</th>
 									<th>Fecha</th>
