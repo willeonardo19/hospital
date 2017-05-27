@@ -87,7 +87,7 @@ y el historial de consulta que ha tenido -->
 
 
 								</div>
-							<div class="panel-heading"><strong>Historial clinico</strong></div>
+							<div class="panel-heading"><strong>Historial clínico</strong></div>
 								<div class="panel-body">
 								<div>
 								<a href="{{ url('admin/consulta') }}" class="btn btn-warning">Atrás</a> <a href="{{url('admin/diagnostico/create').'?paciente='.$paciente->id.'&consulta='.$consulta_id}}" class="btn btn-success">Nuevo Diagnóstico</a></div>
@@ -112,8 +112,32 @@ y el historial de consulta que ha tenido -->
 								    </tbody>
 								  </table>
 								</div>
+								<div class="panel-heading"><strong>Exámenes de Laboratorio</strong></div>
+								<div class="panel-body">
+								
+								<table class="table">
+								    <thead>
+								      <tr>
+								        
+								        <th>Fecha</th>
+								        <th>Exámen</th>
+								        <th>Opciones</th>
+								      </tr>
+								    </thead>
+								    <tbody>
+								      @foreach($laboratorios as $laboratorio)
+										<tr>
+											<td>{{$laboratorio->created_at->format('d/M/Y')}}</td>
+											<td>{{$laboratorio->examen->examen}}</td>
+											<td><a href="{{ url('../public/pdf_exam/'.$laboratorio->resultado )}}" target="_blank" class="btn btn-success glyphicon glyphicon glyphicon-log-out"></a></td>
+										</tr>
+
+								      @endforeach
+								    </tbody>
+								  </table>
+								</div>
 								<div class="text-center">
-  									{!! $consultasdelpaciente->render() !!}
+  									{!! $laboratorios->render() !!}
 								</div>
 							</div>
 							

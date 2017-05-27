@@ -8,7 +8,7 @@
         @if (! Auth::guest())
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{asset('/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
+                    <img src="{{asset('/img/logo_amg.jpg')}}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
                     <p>{{ Auth::user()->name }}</p>
@@ -62,7 +62,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ route('pacientes.index') }}">Registro de Pacientes</a></li>
                         <li><a href="{{ route('consultas.index') }}">Generar Consulta</a></li>
-                        <li><a href="{{url('admin/historial')}}">Constancia Médica</a></li>
+                        <!--li><a href="{{url('admin/historial')}}">Constancia Médica</a></li-->
                         
                     </ul>
                 </li>
@@ -70,20 +70,20 @@
 
                 @endif
                 @if(Auth::user()->type =='admin' || Auth::user()->type =='doctor')
-                <li class="treeview">
-                    <!--a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a-->
+                <!--li class="treeview">
+                    <!--a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a->
                     <a href="#"><i class='fa fa-user-md'></i> <span> Medicos </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                         <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
                     </ul>
-                </li>
+                </li-->
                 @endif
                 @if(Auth::user()->type =='admin' || Auth::user()->type =='enfermera')
                 <li class="treeview">
                     <a href="#"><i class='fa fa-female'></i> <span> Enfermeras </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Calendario</a></li>
+                        <!--li><a href="#">Calendario</a></li-->
                         <li><a href="{{url('admin/preconsulta')}}">Pre Consulta</a></li>
                     </ul>
                 </li>
@@ -104,20 +104,12 @@
                 <li class="treeview">
                     <a href="#"><i class='fa fa-file'></i> <span> Administración </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
+                        <li><a href="#">{{ 'Sigsa'}}</a></li>
+                        
                     </ul>
                 </li>
                  @endif
-                @if(Auth::user()->type =='admin' || Auth::user()->type =='administracion')
-                <li class="treeview">
-                    <a href="#"><i class='fa fa-bar-chart'></i> <span> Reportes </span> <i class="fa fa-angle-left pull-right"></i></a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                        <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    </ul>
-                </li>
-                 @endif
+                
                 
         </ul><!-- /.sidebar-menu -->
     </section>

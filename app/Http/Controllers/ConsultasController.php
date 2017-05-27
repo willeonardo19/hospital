@@ -5,6 +5,7 @@ namespace hospital\Http\Controllers;
 use Illuminate\Http\Request;
 use hospital\Consulta;
 use hospital\Paciente;
+use hospital\Laboratorio;
 use hospital\Preconsulta;
 use hospital\Diagnostico;
 use hospital\User;
@@ -149,20 +150,25 @@ class ConsultasController extends Controller
 
             //dd($consultasdelpaciente);
             $paciente = Paciente::find($id);
+            $laboratorios = Laboratorio::orderBy('created_at', 'ASC')->paginate(10);
             $edad = Carbon::createFromDate(
                 date('Y',strtotime($paciente->fech_na)),
                 date('m',strtotime($paciente->fech_na)),
-                date('d',strtotime($paciente->fech_na)))->age;
+                date('d',strtotime($paciente->fech_na)))
+            ->diff(Carbon::now())->format('%y años, %m meses.');
+            //->diff(Carbon::now())->format('%y años, %m meses ,%d días');
 
             $fecha = Carbon::createFromDate(
                 date('Y',strtotime($paciente->fech_na)),
                 date('m',strtotime($paciente->fech_na)),
                 date('d',strtotime($paciente->fech_na)))
                 ->format('d - m - Y');
+
             
            //dd($paciente2);
            return view('admin.consulta.consulta')
            ->with('paciente',$paciente)
+           ->with('laboratorios',$laboratorios)
            ->with('consultasdelpaciente',$consultasdelpaciente)
            ->with('edad',$edad)
            ->with('fecha',$fecha)
@@ -192,7 +198,8 @@ class ConsultasController extends Controller
         $edad = Carbon::createFromDate(
             date('Y',strtotime($paciente->fech_na)),
             date('m',strtotime($paciente->fech_na)),
-            date('d',strtotime($paciente->fech_na)))->age;
+            date('d',strtotime($paciente->fech_na)))
+        ->diff(Carbon::now())->format('%y años, %m meses.');
 
         $fecha = Carbon::createFromDate(
             date('Y',strtotime($paciente->fech_na)),

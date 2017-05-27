@@ -4,7 +4,7 @@ namespace hospital\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UsuarioRequest extends FormRequest
+class UpdataUsuarioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'user'              =>      'min:3|max:250|required|unique:users',
-            'email'             =>      'min:3|max:250|required|unique:users',
+            'user'              =>      'min:3|max:250|required|unique:users,id,:id',
+            'email'             =>      'min:3|max:250|required|unique:users,id,:id',
             'password'          =>      'min:6|max:20|required',
             'rol'               =>      'required',
             'idpersonal'        =>      'required'

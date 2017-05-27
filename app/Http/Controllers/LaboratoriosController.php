@@ -12,6 +12,7 @@ use Laracasts\Flash\Flash;
 use DB;
 use Carbon\Carbon;
 use PDF;
+use Illuminate\Support\Facades\Storage;
 class LaboratoriosController extends Controller
 {
     /**
@@ -59,7 +60,7 @@ class LaboratoriosController extends Controller
             $laboratorio = new Laboratorio;
             DB::beginTransaction();
             $file = $request->file('pdf_file');
-            $name = $paciente->nombre.'_'.$paciente->apellido.'_'.$examen->examen.'_'.time().'.'.$file->getClientOriginalExtension();
+            $name = $paciente->cod_pac.'_'.time().'.'.$file->getClientOriginalExtension();
             $laboratorio->paciente_id   = $request->input('paciente_id');
             $laboratorio->examen_id     = $request->input('examen_id');
             $laboratorio->resultado     = $name;
@@ -101,7 +102,13 @@ class LaboratoriosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $examenes=Examen::select('examen','id')->pluck('examen','id');
+        $pacientes=Paciente::select(DB::raw("CONCAT(nombre,' ',apellido,' --- ',dpi,'  ---   ',fech_na) AS nombre"),'id')->pluck('nombre', 'id');
+        $laboratorio =  Laboratorio::find($id);
+        return view('admin.laboratorio.edit')
+        ->with('pacientes',$pacientes)
+        ->with('examenes',$examenes)
+        ->with('laboratorio',$laboratorio);
     }
 
     /**
@@ -111,9 +118,35 @@ class LaboratoriosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LaboratorioRequest $request, $id)
     {
-        //
+     try {
+            $paciente   =   Paciente::find($request->paciente_id);
+            $examen     =   Examen::find($request->examen_id);
+            $laboratorio = Laboratorio::find($id);
+             $filename = public_path().'/pdf_exam/'.$laboratorio->resultado;
+            \File::delete($filename);
+            DB::beginTransaction();
+            $file = $request->file('pdf_file');
+            $name = $paciente->cod_pac.'_'.time().'.'.$file->getClientOriginalExtension();
+            $laboratorio->fill([
+            $laboratorio->paciente_id   = $request->input('paciente_id'),
+            $laboratorio->examen_id     = $request->input('examen_id'),
+            $laboratorio->resultado     = $name
+                ]);
+
+            if($laboratorio->save()){
+                DB::commit();
+                $file->move('pdf_exam',$name);
+                Flash::success('Modificación realizada con éxito');  
+
+            }
+
+         } catch (Exception $e) {
+             DB::rollback();
+            Flash::error('Ocurrió un problema al procesar su solicitud.'.$e); 
+         }
+         return redirect('admin/laboratorio');   
     }
 
     /**
@@ -124,6 +157,22 @@ class LaboratoriosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            DB::transaction(function() use ($id) {   
+                $record = Laboratorio::find($id);
+                
+                 $filename = public_path().'/pdf_exam/'.$record->resultado;
+                \File::delete($filename);
+
+                if($record->delete()){
+                    DB::commit();
+                    Flash::success('Eliminación realizada con éxito');   
+                }
+            });
+        } catch (Exception $e) {
+            DB::rollback();
+            Flash::error('Ocurrió un problema al procesar su solicitud.'.$e);  
+        } 
+        return redirect('admin/laboratorio');
     }
 }

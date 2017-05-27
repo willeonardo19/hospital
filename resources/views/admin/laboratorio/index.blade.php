@@ -20,12 +20,12 @@
 							<div class="row">
 									<a href="{{route('laboratorio.create')}}" class="btn btn-primary">Subir Exámen</a>
 									<!--a href="{{url('admin/ExportarPersonal')}}" class="btn btn-success">Exportar Excel</a-->
-									{!! Form::open(['laboratorio.index','method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
+									<!--{!! Form::open(['laboratorio.index','method' =>'GET', 'class'=>'navbar-form pull-right'])!!}
 										<div class="input-group">
 											{!! Form::text('buscar',null,['class'=>'form-control','placeholder'=>'Buscar Exámen','aria-describedby'=>'search'])!!}
 											<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
 										</div>
-									{!! Form::close() !!}
+									{!! Form::close() !!}-->
 									<hr>
 									<!--form action="ImportarPersonal" method="POST" enctype="multipart/form-data">
 										{!!Form::file('file');!!}
@@ -57,9 +57,11 @@
 												<td class="hidden-xs hidden-sm hidden-md">{{ $laboratorio->created_at }}</td>
 											
 												<td>
+												<a href="{{ '.././pdf_exam/'.$laboratorio->resultado }}" target="_blank" class="btn btn-success glyphicon glyphicon-download-alt"></a>
+
 													<a href="{{ route('laboratorio.edit',$laboratorio->id) }}" class="btn btn-warning glyphicon glyphicon-edit"></a>
 
-													<a href="{{ route('laboratorio.destroy',$laboratorio->id) }}" onClick="return confirm('¿Desea eliminar esta persona?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
+													<a href="{{ route('laboratorio.destroy',$laboratorio->id) }}" onClick="return confirm('¿Desea eliminar este exámen?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
 												</td>
 											</tr>
 										@endforeach

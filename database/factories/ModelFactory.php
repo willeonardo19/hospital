@@ -48,7 +48,7 @@ $factory->define(Personal::class, function(Generator $faker){
 
 $factory->define(Paciente::class, function(Generator $faker){
 		$array	=	[
-			'cod_pac'			=>		$faker->numberBetween(1,999).'-'.$faker->numberBetween(1,999),
+			'cod_pac'			=>		$faker->numberBetween(1,999).$faker->numberBetween(1,999),
 			'dpi'				=>		$faker->numberBetween(111111111,999999999).$faker->numberBetween(1501,1508),
 			'nombre'			=>		$faker->firstName,
 			'apellido'			=>		$faker->lastName,

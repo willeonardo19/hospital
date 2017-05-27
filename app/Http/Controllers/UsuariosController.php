@@ -5,6 +5,7 @@ namespace hospital\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use hospital\Http\Requests\UsuarioRequest;
+use hospital\Http\Requests\UpdataUsuarioRequest;
 use hospital\User;
 use hospital\Personal;
 use Laracasts\Flash\Flash;
@@ -121,7 +122,7 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsuarioRequest $request, $id)
+    public function update(UpdataUsuarioRequest $request, $id)
     {
         try {
             $user = User::find($id);
