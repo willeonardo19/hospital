@@ -28,15 +28,15 @@ class pacienteSeeder extends Seeder
         	//'antecedentes'		=>	'Ninguno',
         	'created_at' 		=> date("Y-m-d H:i:s") 
         	]);
-        /*
+        
         DB::table('paciente')->insert([
             'cod_pac'           =>  '1907',
             'dpi'               =>  '2197696381501',
-            'nombre'            =>  'Alvaro',
-            'apellido'          =>  'Tahuico',
+            'nombre'            =>  'Rosa',
+            'apellido'          =>  'Diaz',
             'telefono'          =>  '41154437',
             'fech_na'           =>  '1992-08-19',
-            'sexo'              =>  'masculino',
+            'sexo'              =>  'femenino',
             'est_civ'           =>  'soltero',
             'ocupacion'         =>  'Estudiante',
             'direccion'         =>  'Salamá, Baja Verapaz',
@@ -53,7 +53,7 @@ class pacienteSeeder extends Seeder
             'telefono'          =>  '87896545',
             'fech_na'           =>  '1992-08-19',
             'sexo'              =>  'femenino',
-            'est_civ'           =>  'soltero',
+            'est_civ'           =>  'casado',
             'ocupacion'         =>  'Estudiante',
             'direccion'         =>  'Salamá, Baja Verapaz',
             'contacemer'       =>  'Cundo Leonardo',
@@ -61,7 +61,7 @@ class pacienteSeeder extends Seeder
             //'antecedentes'        =>  'Ninguno',
             'created_at'        => date("Y-m-d H:i:s") 
             ]);
-    */
-         factory(hospital\Paciente::class,9)->create();
+    
+         factory(hospital\Paciente::class,100)->create();
     }
 }

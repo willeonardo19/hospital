@@ -102,10 +102,13 @@
                 @if(Auth::user()->type =='admin' || Auth::user()->type =='administracion')
 
                 <li class="treeview">
-                    <a href="#"><i class='fa fa-file'></i> <span> Administración </span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class='glyphicon glyphicon-stats'></i> <span> Estadística </span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('reportes.index') }}">{{ 'Sigsa'}}</a></li>
-                        
+                        <!--li><a href="{{route('reportes.index') }}">{{ 'Sigsa'}}</a></li-->
+                        <li><a href="{{ url('admin/estadisticapaciente') }}">Pacientes</a></li>
+                        <li><a href="{{ url('admin/estadisticapersonal') }}">Personal</a></li>
+                        <li><a href="{{ url('admin/estadisticaconsulta') }}">Consulta</a></li>
+                        <li><a href="{{ url('admin/estadisticalaboratorio') }}">Laboratorio</a></li>
                     </ul>
                 </li>
                  @endif

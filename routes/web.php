@@ -29,7 +29,16 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	Route::get('ExportarUsuarios','ExcelController@ExportarUsuarios');
 	Route::get('ExportarPacientes','ExcelController@ExportarPacientes');
 
+	//Graficas
+	Route::resource('test','GraficasController');
+	Route::any('estadisticapaciente','GraficasController@estadisticapaciente');
+	Route::any('estadisticapersonal','GraficasController@estadisticapersonal');
+	Route::any('estadisticaconsulta','GraficasController@estadisticaconsulta');
+	Route::any('estadisticalaboratorio','GraficasController@estadisticalaboratorio');
+
+
 	Route::resource('personal','PersonalController');
+
 	Route::get('personal/{id}/destroy',[
 			'uses'		=>	'PersonalController@destroy',
 			'as'		=>	'personal.destroy'
